@@ -81,9 +81,8 @@
 
 html,
 body {
-  max-width: 100vw;
+  width: 100vw;
   overflow-x: hidden;
-  min-height: 100vh;
 
   font-family: "Poppins", sans-serif;
   font-weight: 400;
@@ -96,7 +95,7 @@ body {
   background: linear-gradient(180deg, #1B1E25 18.86%, #007295 100%);
 
   div#__next{
-    min-height: 100vh;
+    height: 100vh;
   }
 }
 
