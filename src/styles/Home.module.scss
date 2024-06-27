@@ -1,0 +1,34 @@
+.loading{
+  background: url("/images/loading/background.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100vh;
+
+  .cat{
+    text-align: center;
+    padding-top: 132px;
+  }
+
+  .content{
+    padding-top: 50px;
+    padding-left: 55px;
+    padding-right: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    justify-content: center;
+
+    .text{
+      color: #FFF;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}

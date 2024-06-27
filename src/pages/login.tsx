@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Login.module.scss";
 import Image from "next/image";
 
-export default function Index() {
+export default function Login() {
   const [currentValue, setCurrentValue] = useState(0);
   const maxValue = 100;
 
