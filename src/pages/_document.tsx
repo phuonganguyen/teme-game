@@ -9,6 +9,7 @@ export default function Document() {
           content="TEME is powered By AI Technology, meme coin Gaming, Restaking & Real World Asset (RWA)"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="https://telegram.org/js/telegram-web-app.js" defer />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

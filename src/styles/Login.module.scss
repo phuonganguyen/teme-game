@@ -4,10 +4,13 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   
     .cat{
       text-align: center;
-      padding-top: 132px;
     }
   
     .content{
