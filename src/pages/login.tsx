@@ -1,8 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Login.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { CustomWindow } from "@/types/custom.window";
+import { json } from "stream/consumers";
+
+declare let window: CustomWindow;
 
 export default function Login() {
+  const router = useRouter();
   const [currentValue, setCurrentValue] = useState(0);
   const maxValue = 100;
 
@@ -23,6 +29,36 @@ export default function Login() {
       clearInterval(r);
     };
   }, [increment]);
+
+  useEffect(() => {
+    const login = async () => {
+      const telegramInitData = window.Telegram.WebApp.initData || null;
+
+      if (!telegramInitData) {
+        router.push("/unauthorized");
+      }
+      const { returnUrl } = router.query;
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramInitData }),
+      });
+
+      const authData = await response.json();
+
+      if (authData.isLoggedIn) {
+        setTimeout(() => {
+          router.push(returnUrl as string);
+        }, 3000);
+      } else {
+        router.push("/unauthorized");
+      }
+    };
+
+    if (router.isReady) {
+      login();
+    }
+  }, [router]);
 
   return (
     <div className={`${styles.loading}`}>

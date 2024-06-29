@@ -12,13 +12,9 @@ export const middleware = async (req: NextRequest, event: NextFetchEvent) => {
     res,
     sessionOptions
   );
-  const { user } = session;
+  const { hash, tgChatId } = session;
 
-  if (
-    user === undefined ||
-    user.hash === undefined ||
-    user.tgChatId === undefined
-  ) {
+  if (hash === undefined || tgChatId === undefined) {
     return NextResponse.redirect(
       new URL(`/login?returnUrl=${pathname}${searchParams}`, req.url)
     ); // redirect to /unauthorized page
