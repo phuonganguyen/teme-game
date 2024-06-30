@@ -15,6 +15,7 @@ declare module "iron-session" {
     isLoggedIn: boolean;
     tgChatId: number;
     username: string;
+    coins: number;
     hash: string;
   }
 }
