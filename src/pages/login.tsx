@@ -36,7 +36,7 @@ export default function Login() {
       if (!telegramInitData) {
         router.push("/unauthorized");
       }
-      const { returnUrl } = router.query;
+
       const response = await fetch("/api/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -62,8 +62,8 @@ export default function Login() {
       <div className={styles.cat}>
         <Image
           src={"/images/loading/cat.png"}
-          width={350}
-          height={350}
+          width={250}
+          height={250}
           alt="cat-loading"
         />
       </div>
