@@ -2,15 +2,14 @@ import { sessionOptions } from "@/libs/session";
 import { IronSessionData, getIronSession } from "iron-session";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import styles from "@/styles/Home.module.scss";
-import Menu from "@/components/Menu";
 import Image from "next/image";
+import Layout from "@/components/Layout";
 
 export default function Index({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
-    <main className={styles.home}>
-      <Menu />
+    <Layout>
       <div className={styles.mining}>
         <div className={styles.top}>
           <div className={styles.username}>
@@ -34,7 +33,7 @@ export default function Index({
           />
         </div>
       </div>
-    </main>
+    </Layout>
   );
 }
 
