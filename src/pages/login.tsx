@@ -70,8 +70,8 @@ export default function Login() {
       <div className={styles.content}>
         <Image
           src={"/images/loading/teme.svg"}
-          width={234}
-          height={72}
+          width={225}
+          height={65}
           alt="teme-loading"
         />
         <div className={styles.text}>
