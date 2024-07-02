@@ -57,7 +57,7 @@ export default function Friends({
           </div>
         </div>
         <div className={styles.buttons}>
-          <a href="tg://msg?text=your MsG!" id="telegram_share" className={styles["btn-invite"]} title="inviteFriends">+ Invite a friend</a>
+          <a target="_blank" href="https://t.me/share/url?url=Hi,How Are You ?" className={styles["btn-invite"]} title="inviteFriends">+ Invite a friend</a>
           <button id="btn-copy" className={styles["btn-copy"]} onClick={handleCopyClick}><IconCopy/></button>
         </div>
       </div>
