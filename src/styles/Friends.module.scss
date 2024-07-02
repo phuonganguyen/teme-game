@@ -7,14 +7,14 @@
         display: inline-flex;
         flex-direction: column;
         align-items: center;
-        gap: 40px;
+        gap: 20px;
         width: 100%;
 
         .title{
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
 
             .main{
                 color: var(--White, #FFF);
@@ -41,12 +41,12 @@
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 8px;
+            gap: 4px;
 
             .item{
                 display: flex;
                 align-items: flex-start;
-                gap: 8px;
+                gap: 4px;
                 padding: 12px;
 
                 .content{
@@ -79,6 +79,22 @@
                         }
                     }
                 }
+            }
+        }
+
+        .friend-list{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+
+            .title{
+                color: var(--White, #FFF);
+                font-family: Poppins;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
             }
         }
     }

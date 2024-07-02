@@ -32,6 +32,9 @@ export default function Friends() {
           </div>
         </div>
       </div>
+      <div className={styles["friend-list"]}>
+        <div className={styles.title}>List of your friends</div>
+      </div>
     </div>
   </div>);
 }
