@@ -44,6 +44,7 @@ export default function Login() {
       });
 
       const authData = await response.json();
+      console.log(authData);
 
       if (authData.isLoggedIn) {
         setTimeout(() => {
