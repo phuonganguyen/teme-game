@@ -1,10 +1,26 @@
 import { IconCopy } from "@/components/Icons";
 import Layout from "@/components/Layout";
-import Menu from "@/components/Menu";
+import { sessionOptions } from "@/libs/session";
 import styles from "@/styles/Friends.module.scss";
+import { IronSessionData, getIronSession } from "iron-session";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
+import { useState } from "react";
+import { Tooltip } from "react-tooltip";
 
-export default function Friends() {
+export default function Friends({
+  session,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const refUrl=`https://t.me/temecoin_bot?start=${session.tgChatId}`;
+  const [isOpen, setIsOpen]=useState(false);
+
+  const handleCopyClick=()=>{
+    navigator.clipboard.writeText(refUrl);
+    setIsOpen(true);
+    setTimeout(()=>{
+      setIsOpen(false);
+    },3000)
+  }
   return (
     <Layout>
       <div className={styles.container}>
@@ -41,9 +57,31 @@ export default function Friends() {
           </div>
         </div>
         <div className={styles.buttons}>
-          <button className={styles["btn-invite"]}>+ Invite a friend</button>
-          <button className={styles["btn-copy"]}><IconCopy/></button>
+          <a href="tg://msg?text=your MsG!" id="telegram_share" className={styles["btn-invite"]} title="inviteFriends">+ Invite a friend</a>
+          <button id="btn-copy" className={styles["btn-copy"]} onClick={handleCopyClick}><IconCopy/></button>
         </div>
       </div>
+      <Tooltip anchorSelect="#btn-copy" content="Copied!" isOpen={isOpen} />
     </Layout>);
 }
+
+export const getServerSideProps = (async (context) => {
+  const session = await getIronSession<IronSessionData>(
+    context.req,
+    context.res,
+    sessionOptions
+  );
+
+  if (!session.isLoggedIn) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+
+  return { props: { session } };
+}) satisfies GetServerSideProps<{
+  session: IronSessionData;
+}>;
