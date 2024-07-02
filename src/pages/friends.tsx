@@ -12,21 +12,21 @@ export default function Friends() {
       </div>
       <div className={styles.rewards}>
         <div className={styles.item}>
-          <Image src={"/images/gift1.png"} width={52} height={52} alt="gift1" />
+          <Image src={"/images/gift1.png"} width={48} height={48} alt="gift1" />
           <div className={styles.content}>
             <div className={styles.title}>Invite a friend</div>
             <div className={styles.sub}>
-              <Image src="/images/coins.png" width={24} height={24} alt=""/>
+              <Image src="/images/coins.png" width={20} height={20} alt=""/>
               <div><span className={styles.number}>+5,000</span> for you and <span className={styles.number}>+2,500</span> for your friend</div>
             </div>
           </div>
         </div>
         <div className={styles.item}>
-          <Image src={"/images/gift2.png"} width={52} height={52} alt="gift2" />
+          <Image src={"/images/gift2.png"} width={48} height={48} alt="gift2" />
           <div className={styles.content}>
             <div className={styles.title}>Invite a friend with Telegram Premium</div>
             <div className={styles.sub}>
-              <Image src="/images/coins.png" width={24} height={24} alt=""/>
+              <Image src="/images/coins.png" width={20} height={20} alt=""/>
               <div><span className={styles.number}>+25,000</span> for you and <span className={styles.number}>+10,000</span> for your friend</div>
             </div>
           </div>
