@@ -12,6 +12,7 @@ export default function Friends({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const refUrl=`https://t.me/temecoin_bot?start=${session.tgChatId}`;
+  const message="Play with me, become the pioneer Set To DOMINATE All Memes and get a token airdrop!\n💸 +2k Coins as a first-time gift\n🔥 +25k Coins if you have Telegram Premium"
   const [isOpen, setIsOpen]=useState(false);
 
   const handleCopyClick=()=>{
@@ -57,7 +58,7 @@ export default function Friends({
           </div>
         </div>
         <div className={styles.buttons}>
-          <a target="_blank" href="https://t.me/share/url?url=Hi,How Are You ?" className={styles["btn-invite"]} title="inviteFriends">+ Invite a friend</a>
+          <a target="_blank" href={`https://t.me/share/url?url=${refUrl}&text=${message}`} className={styles["btn-invite"]} title="inviteFriends">+ Invite a friend</a>
           <button id="btn-copy" className={styles["btn-copy"]} onClick={handleCopyClick}><IconCopy/></button>
         </div>
       </div>
