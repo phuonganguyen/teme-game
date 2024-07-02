@@ -45,11 +45,13 @@ export default function Login() {
 
       const authData = await response.json();
 
-      // if (authData.isLoggedIn) {
-      //   router.push("/");
-      // } else {
-      //   router.push("/unauthorized");
-      // }
+      if (authData.isLoggedIn) {
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
+      } else {
+        router.push("/unauthorized");
+      }
     };
 
     if (router.isReady) {
@@ -60,7 +62,6 @@ export default function Login() {
   return (
     <div className={`${styles.loading}`}>
       <div className={styles.cat}>
-        <div className={styles.bg}></div>
         <Image
           src={"/images/loading/cat.png"}
           width={250}
