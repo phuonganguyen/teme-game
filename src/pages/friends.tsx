@@ -36,7 +36,7 @@ export default function Friends() {
       <div className={styles["friend-list"]}>
         <div className={styles.title}>List of your friends (2)</div>
         <div className={styles.list}>
-          You haven't invited anyone yet
+          You haven&apos;t invited anyone yet
         </div>
       </div>
       <div className={styles.buttons}>
