@@ -1,4 +1,39 @@
 .friends{
     background: url("/images/home/background.png") no-repeat center center fixed;
     height: 100vh;
+
+    .container{
+        padding: 15px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+
+        .title{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+
+            .main{
+                color: var(--White, #FFF);
+                text-align: center;
+                font-family: Poppins;
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 700;
+                line-height: normal;
+            }
+
+            .sub{
+                color: #FFF;
+                text-align: center;
+                font-family: Poppins;
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+        }
+    }
 }
