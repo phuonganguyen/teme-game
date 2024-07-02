@@ -44,12 +44,9 @@ export default function Login() {
       });
 
       const authData = await response.json();
-      console.log(authData);
 
       if (authData.isLoggedIn) {
-        setTimeout(() => {
-          router.push(returnUrl as string);
-        }, 3000);
+        router.push(returnUrl as string);
       } else {
         router.push("/unauthorized");
       }
