@@ -1,3 +1,4 @@
+import { IconCopy } from "@/components/Icons";
 import Menu from "@/components/Menu";
 import styles from "@/styles/Friends.module.scss";
 import Image from "next/image";
@@ -33,7 +34,14 @@ export default function Friends() {
         </div>
       </div>
       <div className={styles["friend-list"]}>
-        <div className={styles.title}>List of your friends</div>
+        <div className={styles.title}>List of your friends (2)</div>
+        <div className={styles.list}>
+          You haven't invited anyone yet
+        </div>
+      </div>
+      <div className={styles.buttons}>
+        <button className={styles["btn-invite"]}>+ Invite a friend</button>
+        <button className={styles["btn-copy"]}><IconCopy/></button>
       </div>
     </div>
   </div>);
