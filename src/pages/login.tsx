@@ -60,6 +60,7 @@ export default function Login() {
   return (
     <div className={`${styles.loading}`}>
       <div className={styles.cat}>
+        <div className={styles.bg}></div>
         <Image
           src={"/images/loading/cat.png"}
           width={250}
