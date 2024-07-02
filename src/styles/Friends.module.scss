@@ -8,6 +8,7 @@
         flex-direction: column;
         align-items: center;
         gap: 40px;
+        width: 100%;
 
         .title{
             display: flex;
@@ -33,6 +34,51 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: normal;
+            }
+        }
+
+        .rewards{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+
+            .item{
+                display: flex;
+                align-items: flex-start;
+                gap: 8px;
+                padding: 12px;
+
+                .content{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .title{
+                        color: var(--White, #FFF);
+                        font-family: Poppins;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                    }
+
+                    .sub{
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                        color: var(--White, #FFF);
+                        font-family: Poppins;
+                        font-size: 14px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+
+                        .number{
+                            color: var(--Yellow, #FFF175);
+                        }
+                    }
+                }
             }
         }
     }
