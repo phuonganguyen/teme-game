@@ -29,6 +29,7 @@ export default async function handler(
     session.tgChatId = tgUser.id;
     session.username = tgUser.username;
     session.hash = tgHash;
+    session.coins = 0;
     await session.save();
     res.status(200).json({ isLoggedIn: true });
   } else {
