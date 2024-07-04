@@ -1,3 +1,5 @@
+import db from "@/libs/firestore";
+import { doc, runTransaction } from "@firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Telegraf, Context, Markup } from "telegraf";
 
@@ -5,22 +7,6 @@ const SECRET_HASH = "BQmLdGYERo3PY9dn2HQjsgWfV4t04F";
 const BOT_TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
 const bot = new Telegraf(BOT_TOKEN);
 
-export async function handleTestCommand(ctx: Context) {
-  const COMMAND = "/test";
-  const { message } = ctx;
-
-  let reply = "Hello there! Awaiting your service";
-
-  const didReply = await ctx.reply(reply);
-
-  if (didReply) {
-    console.log(`Reply to ${COMMAND} command sent successfully.`);
-  } else {
-    console.error(
-      `Something went wrong with the ${COMMAND} command. Reply not sent.`
-    );
-  }
-}
 export async function handleOnMessage(ctx: Context) {
   const reply = `Hello! Welcome to TEMECOIN 🐈\n
     The first Player pump player(PPP)  meme AI gaming and Restaking & Rwa Built on @ton_blockchain💎\n
@@ -54,12 +40,36 @@ export async function handleOnMessage(ctx: Context) {
   );
 }
 
-bot.command("test", async (ctx) => {
-  await handleTestCommand(ctx);
-});
-
 bot.start(async (ctx) => {
-  await ctx.reply(ctx.message.text);
+  const { args, message } = ctx;
+  if (args.length > 0) {
+    const refId = args[0];
+    const { id, is_premium, username } = message.from;
+    try {
+      const userDocRef = doc(db, "users", `${id}`);
+      const refDocRef = doc(db, "users", `${refId}`);
+      await runTransaction(db, async (transaction) => {
+        const userDoc = await transaction.get(userDocRef);
+        if (!userDoc.exists()) {
+          transaction.set(userDocRef, {
+            username,
+            coins: is_premium ? 10000 : 2500,
+          });
+        }
+
+        const refDoc = await transaction.get(refDocRef);
+        if (refDoc.exists()) {
+          const newCoins = refDoc.data().coins + (is_premium ? 25000 : 5000);
+          transaction.update(refDocRef, { coins: newCoins });
+        }
+      });
+      console.log("Transaction successfully committed!");
+    } catch (e) {
+      console.log("Transaction failed: ", e);
+    }
+  }
+
+  await handleOnMessage(ctx);
 });
 
 bot.on("message", async (ctx) => {
