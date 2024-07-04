@@ -54,7 +54,7 @@ bot.start(async (ctx) => {
         const userDoc = await transaction.get(userDocRef);
         if (!userDoc.exists()) {
           transaction.set(userDocRef, {
-            username,
+            username: username,
             coins: is_premium ? 10000 : 2500,
           });
         }
