@@ -12,7 +12,9 @@ export default function Friends({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const refUrl=`https://t.me/temecoin_bot?start=${session.tgChatId}`;
-  const message="Play with me, become the pioneer Set To DOMINATE All Memes and get a token airdrop!\n💸 +2k Coins as a first-time gift\n🔥 +25k Coins if you have Telegram Premium"
+  const message=`Play with me, become the pioneer Set To DOMINATE All Memes and get a token airdrop!
+  💸 +2k Coins as a first-time gift
+  🔥 +25k Coins if you have Telegram Premium`;
   const [isOpen, setIsOpen]=useState(false);
 
   const handleCopyClick=()=>{
