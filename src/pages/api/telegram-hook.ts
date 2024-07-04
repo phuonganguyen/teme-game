@@ -22,7 +22,11 @@ export async function handleTestCommand(ctx: Context) {
     }
   }
   export async function handleOnMessage(ctx: Context) {
-    const reply = "Hello! Welcome to TEMECOIN 🐈\nThe first Player pump player(PPP)  meme AI gaming and Restaking & Rwa Built on @ton_blockchain💎\nTap the screen, collect coins, Up a level, Lucky Spin, battle pump up your passive income, and Become the pioneer Set To DOMINATE All Memes!\nWe’ll definitely appreciate your efforts once the token is listed (the dates are coming soon).\nDon't forget about your friends — bring them to the game and get even more coins together!";
+    const reply = "Hello! Welcome to TEMECOIN 🐈\
+    The first Player pump player(PPP)  meme AI gaming and Restaking & Rwa Built on @ton_blockchain💎\
+    Tap the screen, collect coins, Up a level, Lucky Spin, battle pump up your passive income, and Become the pioneer Set To DOMINATE All Memes!\
+    We’ll definitely appreciate your efforts once the token is listed (the dates are coming soon).\
+    Don't forget about your friends — bring them to the game and get even more coins together!";
   
     await ctx.reply(reply,
       Markup.inlineKeyboard([
