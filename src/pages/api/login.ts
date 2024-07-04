@@ -27,7 +27,7 @@ export default async function handler(
     sessionOptions
   );
   if (isVerified) {
-    var result = await setDoc(doc(db, "users", "user-id"), {username:"abc"}, {
+    var result = await setDoc(doc(db, "users", tgUser.id), {username:"xyz"}, {
       merge: true,
   });
     // await setDoc(doc(db,"users",tgUser.id),{
