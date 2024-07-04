@@ -39,7 +39,10 @@ export default async function handler(
         coins: 0
       }
 
-      await setDoc(doc(db,"users",tgUser.id),user);
+      await setDoc(doc(db,"users",tgUser.id),{
+        username: tgUser.username,
+        coins: 0
+      });
     }
 
     session.isLoggedIn = true;
@@ -48,7 +51,6 @@ export default async function handler(
     session.hash = tgHash;
     session.coins = user.coins;
 
-    
     await session.save();
     res.status(200).json({ isLoggedIn: true });
   } else {
