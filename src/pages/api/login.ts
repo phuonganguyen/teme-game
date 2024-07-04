@@ -27,29 +27,33 @@ export default async function handler(
     sessionOptions
   );
   if (isVerified) {
-    const userRef=doc(db,"users", tgUser.id);
-    const userSnap = await getDoc(userRef);
-    let user=null;
-    if(userSnap.exists())
-    {
-      user = userSnap.data();
-    }else{
-      user = {
-        username: tgUser.username,
-        coins: 0
-      }
+    await setDoc(doc(db,"users",tgUser.id),{
+      username: tgUser.username,
+      coins: 0
+    });
+    // const userRef=doc(db,"users", tgUser.id);
+    // const userSnap = await getDoc(userRef);
+    // let user=null;
+    // if(userSnap.exists())
+    // {
+    //   user = userSnap.data();
+    // }else{
+    //   user = {
+    //     username: tgUser.username,
+    //     coins: 0
+    //   }
 
-      await setDoc(doc(db,"users",tgUser.id),{
-        username: tgUser.username,
-        coins: 0
-      });
-    }
+    //   await setDoc(doc(db,"users",tgUser.id),{
+    //     username: tgUser.username,
+    //     coins: 0
+    //   });
+    // }
 
     session.isLoggedIn = true;
     session.tgChatId = tgUser.id;
-    session.username = user.username;
+    session.username = tgUser.username;
     session.hash = tgHash;
-    session.coins = user.coins;
+    session.coins = 0;
 
     await session.save();
     res.status(200).json({ isLoggedIn: true });
