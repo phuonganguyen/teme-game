@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.6.4",
     "crypto-js": "^4.2.0",
+    "firebase": "^10.12.3",
     "iron-session": "^8.0.2",
     "next": "14.2.4",
     "react": "^18",

@@ -3,6 +3,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import CryptoJS from "crypto-js";
 import { IronSessionData, getIronSession } from "iron-session";
 import { sessionOptions } from "@/libs/session";
+import db from "@/libs/firestore";
+import { doc, getDoc, setDoc } from "@firebase/firestore";
 
 const TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
 
@@ -25,11 +27,28 @@ export default async function handler(
     sessionOptions
   );
   if (isVerified) {
+    const userRef=doc(db,"users", tgUser.id);
+    const userSnap = await getDoc(userRef);
+    let user=null;
+    if(userSnap.exists())
+    {
+      user = userSnap.data();
+    }else{
+      user = {
+        username: tgUser.username,
+        coins: 0
+      }
+
+      await setDoc(doc(db,"users",tgUser.id),user);
+    }
+
     session.isLoggedIn = true;
     session.tgChatId = tgUser.id;
-    session.username = tgUser.username;
+    session.username = user.username;
     session.hash = tgHash;
-    session.coins = 0;
+    session.coins = user.coins;
+
+    
     await session.save();
     res.status(200).json({ isLoggedIn: true });
   } else {
