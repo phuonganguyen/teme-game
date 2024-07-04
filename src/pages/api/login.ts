@@ -27,36 +27,25 @@ export default async function handler(
     sessionOptions
   );
   if (isVerified) {
-    var result = await setDoc(doc(db, "users", tgUser.id), {username:"xyz"}, {
-      merge: true,
-  });
-    // await setDoc(doc(db,"users",tgUser.id),{
-    //   username: tgUser.username,
-    //   coins: 0
-    // });
-    // const userRef=doc(db,"users", tgUser.id);
-    // const userSnap = await getDoc(userRef);
-    // let user=null;
-    // if(userSnap.exists())
-    // {
-    //   user = userSnap.data();
-    // }else{
-    //   user = {
-    //     username: tgUser.username,
-    //     coins: 0
-    //   }
+    const userRef = doc(db, "users", `${tgUser.id}`);
+    const userSnap = await getDoc(userRef);
+    let user = null;
+    if (userSnap.exists()) {
+      user = userSnap.data();
+    } else {
+      user = {
+        username: tgUser.username,
+        coins: 0,
+      };
 
-    //   await setDoc(doc(db,"users",tgUser.id),{
-    //     username: tgUser.username,
-    //     coins: 0
-    //   });
-    // }
+      await setDoc(doc(db, "users", `${tgUser.id}`), user, { merge: true });
+    }
 
     session.isLoggedIn = true;
-    session.tgChatId = tgUser.id;
-    session.username = tgUser.username;
+    session.tgChatId = user.id;
+    session.username = user.username;
     session.hash = tgHash;
-    session.coins = 0;
+    session.coins = user.coins;
 
     await session.save();
     res.status(200).json({ isLoggedIn: true });
