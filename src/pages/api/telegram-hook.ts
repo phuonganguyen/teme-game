@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Telegraf, Context } from "telegraf";
+import { Telegraf, Context, Markup } from "telegraf";
 
 const SECRET_HASH = "BQmLdGYERo3PY9dn2HQjsgWfV4t04F";
 const BOT_TOKEN= "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
@@ -22,20 +22,16 @@ export async function handleTestCommand(ctx: Context) {
     }
   }
   export async function handleOnMessage(ctx: Context) {
-    const { message } = ctx;
+    const reply = "Hello! Welcome to TEMECOIN 🐈\nThe first Player pump player(PPP)  meme AI gaming and Restaking & Rwa Built on @ton_blockchain💎\nTap the screen, collect coins, Up a level, Lucky Spin, battle pump up your passive income, and Become the pioneer Set To DOMINATE All Memes!\nWe’ll definitely appreciate your efforts once the token is listed (the dates are coming soon).\nDon't forget about your friends — bring them to the game and get even more coins together!";
   
-    const isGroup =
-      message?.chat.type === "group" || message?.chat.type === "supergroup";
-  
-    if (isGroup) {
-      await ctx.reply("This bot is only available in private chats.");
-      return;
-    }
-  
-    const telegramUsername = message?.from?.username;
-    const reply = "a message was sent";
-  
-    await ctx.reply(reply);
+    await ctx.reply(reply,
+      Markup.inlineKeyboard([
+        [Markup.button.url("Subscribe to the channel", "https://t.me/Temecoinxyz")],
+        [Markup.button.url("Follow Twitter channel", "https://x.com/Temecoinxyz")],
+        [Markup.button.url("Subscribe Youtube channel", "https://youtube.com/@Temecoinxyz ")],
+        [Markup.button.webApp("PLAY  NOW", "https://game.temecoin.xyz")]
+      ]
+     ));
   }
   
   bot.command("test", async (ctx) => {
