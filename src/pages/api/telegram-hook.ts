@@ -67,7 +67,7 @@ bot.start(async (ctx) => {
       });
       console.log("Transaction successfully committed!");
     } catch (e) {
-      ctx.reply(e);
+      ctx.reply(JSON.stringify(e));
       console.log("Transaction failed: ", e);
     }
   }
