@@ -27,10 +27,10 @@ export default async function handler(
     sessionOptions
   );
   if (isVerified) {
-    await setDoc(doc(db,"users",tgUser.id),{
-      username: tgUser.username,
-      coins: 0
-    });
+    // await setDoc(doc(db,"users",tgUser.id),{
+    //   username: tgUser.username,
+    //   coins: 0
+    // });
     // const userRef=doc(db,"users", tgUser.id);
     // const userSnap = await getDoc(userRef);
     // let user=null;
