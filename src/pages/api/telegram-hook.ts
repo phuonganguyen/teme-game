@@ -45,9 +45,11 @@ bot.start(async (ctx) => {
   if (args.length > 0) {
     const refId = args[0];
     const { id, is_premium, username } = message.from;
+    ctx.reply(refId);
+    ctx.reply(id.toString());
     try {
       const userDocRef = doc(db, "users", `${id}`);
-      const refDocRef = doc(db, "users", `${refId}`);
+      const refDocRef = doc(db, "users", refId);
       await runTransaction(db, async (transaction) => {
         const userDoc = await transaction.get(userDocRef);
         if (!userDoc.exists()) {
@@ -65,6 +67,7 @@ bot.start(async (ctx) => {
       });
       console.log("Transaction successfully committed!");
     } catch (e) {
+      ctx.reply(e);
       console.log("Transaction failed: ", e);
     }
   }
