@@ -1,5 +1,11 @@
 import db from "@/libs/firestore";
-import { doc, runTransaction } from "@firebase/firestore";
+import {
+  doc,
+  getDoc,
+  runTransaction,
+  setDoc,
+  updateDoc,
+} from "@firebase/firestore";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Telegraf, Context, Markup } from "telegraf";
 
@@ -49,22 +55,22 @@ bot.start(async (ctx) => {
     ctx.reply(id.toString());
     try {
       const userDocRef = doc(db, "users", `${id}`);
-      const refDocRef = doc(db, "users", refId);
-      await runTransaction(db, async (transaction) => {
-        const userDoc = await transaction.get(userDocRef);
-        if (!userDoc.exists()) {
-          transaction.set(userDocRef, {
-            username: username,
-            coins: is_premium ? 10000 : 2500,
-          });
-        }
+      const userDoc = await getDoc(userDocRef);
+      if (!userDoc.exists()) {
+        await setDoc(
+          userDocRef,
+          { username: username, coins: is_premium ? 10000 : 2500 },
+          { merge: true }
+        );
+      }
 
-        const refDoc = await transaction.get(refDocRef);
-        if (refDoc.exists()) {
-          const newCoins = refDoc.data().coins + (is_premium ? 25000 : 5000);
-          transaction.update(refDocRef, { coins: newCoins });
-        }
-      });
+      const refDocRef = doc(db, "users", refId);
+      const refDoc = await getDoc(refDocRef);
+      if (refDoc.exists()) {
+        const newCoins = refDoc.data().coins + (is_premium ? 25000 : 5000);
+        await updateDoc(refDocRef, { coins: newCoins });
+      }
+
       console.log("Transaction successfully committed!");
     } catch (e) {
       ctx.reply(JSON.stringify(e));
