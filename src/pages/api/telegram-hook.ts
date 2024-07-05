@@ -66,17 +66,15 @@ bot.start(async (ctx) => {
               id: refId,
               username: ref.username,
               coins: newCoins,
-              timestamp: serverTimestamp(),
             });
             ctx.reply("start update ref");
             await updateDoc(refDocRef, {
               coins: increment(newCoins),
-              // friends: arrayUnion({
-              //   id: `${id}`,
-              //   username: username,
-              //   coins: coins,
-              //   timestamp: serverTimestamp(),
-              // }),
+              friends: arrayUnion({
+                id: `${id}`,
+                username: username,
+                coins: coins,
+              }),
             });
 
             ctx.reply("updated ref");
@@ -89,7 +87,6 @@ bot.start(async (ctx) => {
             username: username,
             coins: coins,
             friends: friends,
-            createTime: serverTimestamp(),
           },
           { merge: true }
         );
