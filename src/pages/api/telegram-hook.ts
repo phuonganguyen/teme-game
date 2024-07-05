@@ -14,11 +14,7 @@ const BOT_TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
 const bot = new Telegraf(BOT_TOKEN);
 
 export async function handleOnMessage(ctx: Context) {
-  const reply = `Hello! Welcome to TEMECOIN 🐈\n
-    The first Player pump player(PPP)  meme AI gaming and Restaking & Rwa Built on @ton_blockchain💎\n
-    Tap the screen, collect coins, Up a level, Lucky Spin, battle pump up your passive income, and Become the pioneer Set To DOMINATE All Memes!\n
-    We’ll definitely appreciate your efforts once the token is listed (the dates are coming soon).\n
-    Don't forget about your friends — bring them to the game and get even more coins together!`;
+  const reply = `Hello! Welcome to TEMECOIN 🐈\nThe first Player pump player(PPP)  meme AI gaming and Restaking & Rwa Built on @ton_blockchain💎\nTap the screen, collect coins, Up a level, Lucky Spin, battle pump up your passive income, and Become the pioneer Set To DOMINATE All Memes!\nWe’ll definitely appreciate your efforts once the token is listed (the dates are coming soon).\nDon't forget about your friends — bring them to the game and get even more coins together!`;
 
   await ctx.reply(
     reply,
@@ -51,29 +47,34 @@ bot.start(async (ctx) => {
   if (args.length > 0) {
     const refId = args[0];
     const { id, is_premium, username } = message.from;
-    ctx.reply(refId);
-    ctx.reply(id.toString());
     try {
       const userDocRef = doc(db, "users", `${id}`);
       const userDoc = await getDoc(userDocRef);
+      const isValidRef = refId !== id.toString();
       if (!userDoc.exists()) {
+        let coins = 0;
+        if(isValidRef){
+          coins = is_premium ? 10000 : 2500;
+        }
+
         await setDoc(
           userDocRef,
-          { username: username, coins: is_premium ? 10000 : 2500 },
+          { username: username, coins: coins },
           { merge: true }
         );
       }
 
-      const refDocRef = doc(db, "users", refId);
-      const refDoc = await getDoc(refDocRef);
-      if (refDoc.exists()) {
-        const newCoins = refDoc.data().coins + (is_premium ? 25000 : 5000);
-        await updateDoc(refDocRef, { coins: newCoins });
+      if (isValidRef) {
+        const refDocRef = doc(db, "users", refId);
+        const refDoc = await getDoc(refDocRef);
+        if (refDoc.exists()) {
+          const newCoins = refDoc.data().coins + (is_premium ? 25000 : 5000);
+          await updateDoc(refDocRef, { coins: newCoins });
+        }
       }
 
       console.log("Transaction successfully committed!");
     } catch (e) {
-      ctx.reply(JSON.stringify(e));
       console.log("Transaction failed: ", e);
     }
   }
