@@ -30,7 +30,19 @@ export default function Friends({
     if (session.friends && session.friends.length > 0) {
       return session.friends.map(({ id, username, coins }) => (
         <div key={id} className={styles.friend}>
-          {username}
+          <div className={styles.left}>
+            <Image
+              src={"/images/friend_cat.png"}
+              width={50}
+              height={50}
+              alt={id}
+            />
+            <div>{username}</div>
+          </div>
+          <div className={styles.right}>
+            <Image src={"/images/coins.png"} width={50} height={50} alt="c" />
+            <div>{`+ ${coins}`}</div>
+          </div>
         </div>
       ));
     }
