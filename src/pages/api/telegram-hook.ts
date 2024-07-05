@@ -91,9 +91,10 @@ bot.start(async (ctx) => {
           { merge: true }
         );
       }
-
+      ctx.reply("Transaction successfully committed!");
       console.log("Transaction successfully committed!");
     } catch (e) {
+      ctx.reply(JSON.stringify(e));
       console.log("Transaction failed: ", e);
     }
   }
