@@ -68,6 +68,7 @@ bot.start(async (ctx) => {
               coins: newCoins,
               timestamp: serverTimestamp(),
             });
+            ctx.reply("start update ref");
             await updateDoc(refDocRef, {
               coins: increment(newCoins),
               friends: arrayUnion({
@@ -77,6 +78,8 @@ bot.start(async (ctx) => {
                 timestamp: serverTimestamp(),
               }),
             });
+
+            ctx.reply("updated ref");
           }
         }
 
