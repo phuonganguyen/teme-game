@@ -71,12 +71,12 @@ bot.start(async (ctx) => {
             ctx.reply("start update ref");
             await updateDoc(refDocRef, {
               coins: increment(newCoins),
-              friends: arrayUnion({
-                id: `${id}`,
-                username: username,
-                coins: coins,
-                timestamp: serverTimestamp(),
-              }),
+              // friends: arrayUnion({
+              //   id: `${id}`,
+              //   username: username,
+              //   coins: coins,
+              //   timestamp: serverTimestamp(),
+              // }),
             });
 
             ctx.reply("updated ref");
