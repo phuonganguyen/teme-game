@@ -2,14 +2,21 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Login.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { CustomWindow } from "@/types/custom.window";
-
-declare let window: CustomWindow;
 
 export default function Login() {
   const router = useRouter();
   const [currentValue, setCurrentValue] = useState(0);
   const maxValue = 100;
+  const [webApp, setWebApp] = useState<WebApp | null>(null);
+
+  useEffect(() => {
+    const app = window.Telegram.WebApp;
+    if (app) {
+      app.ready();
+      app.expand();
+      setWebApp(app);
+    }
+  }, []);
 
   const increment = useCallback(() => {
     if (currentValue === maxValue) {
@@ -31,7 +38,7 @@ export default function Login() {
 
   useEffect(() => {
     const login = async () => {
-      const telegramInitData = window.Telegram.WebApp.initData || null;
+      const telegramInitData = webApp?.initData;
 
       if (!telegramInitData) {
         router.push("/unauthorized");
@@ -57,7 +64,7 @@ export default function Login() {
     if (router.isReady) {
       login();
     }
-  }, [router]);
+  }, [router, webApp]);
 
   return (
     <div className={`${styles.loading}`}>
