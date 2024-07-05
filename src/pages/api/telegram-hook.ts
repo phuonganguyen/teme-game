@@ -66,18 +66,18 @@ bot.start(async (ctx) => {
               id: refId,
               username: ref.username,
               coins: newCoins,
+              time: Date.now(),
             });
-            ctx.reply("start update ref");
+
             await updateDoc(refDocRef, {
               coins: increment(newCoins),
               friends: arrayUnion({
                 id: `${id}`,
                 username: username,
                 coins: coins,
+                time: Date.now(),
               }),
             });
-
-            ctx.reply("updated ref");
           }
         }
 
@@ -87,11 +87,11 @@ bot.start(async (ctx) => {
             username: username,
             coins: coins,
             friends: friends,
+            joinTime: Date.now(),
           },
           { merge: true }
         );
       }
-      ctx.reply("Transaction successfully committed!");
       console.log("Transaction successfully committed!");
     } catch (e) {
       ctx.reply(JSON.stringify(e));

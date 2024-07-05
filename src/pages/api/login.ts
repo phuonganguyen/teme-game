@@ -32,28 +32,20 @@ export default async function handler(
     let user = null;
     if (userSnap.exists()) {
       user = userSnap.data();
-    } else {
-      user = {
-        username: tgUser.username,
-        coins: 0,
-      };
-
-      await setDoc(doc(db, "users", `${tgUser.id}`), user, { merge: true });
+      session.isLoggedIn = true;
+      session.tgChatId = user.id;
+      session.username = user.username;
+      session.hash = tgHash;
+      session.coins = user.coins;
+      await session.save();
+      res.status(200).json({ isLoggedIn: true });
+      return;
     }
-
-    session.isLoggedIn = true;
-    session.tgChatId = user.id;
-    session.username = user.username;
-    session.hash = tgHash;
-    session.coins = user.coins;
-
-    await session.save();
-    res.status(200).json({ isLoggedIn: true });
-  } else {
-    session.destroy();
-    await session.save();
-    res.status(200).json({ isLoggedIn: false });
   }
+
+  session.destroy();
+  await session.save();
+  res.status(200).json({ isLoggedIn: false });
 }
 
 const verifyWebAppOpenByTelegram = async (
