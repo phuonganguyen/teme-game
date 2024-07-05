@@ -1,8 +1,10 @@
 import db from "@/libs/firestore";
 import {
+  arrayUnion,
   doc,
   getDoc,
-  runTransaction,
+  increment,
+  serverTimestamp,
   setDoc,
   updateDoc,
 } from "@firebase/firestore";
@@ -50,27 +52,44 @@ bot.start(async (ctx) => {
     try {
       const userDocRef = doc(db, "users", `${id}`);
       const userDoc = await getDoc(userDocRef);
-      const isValidRef = refId !== id.toString();
       if (!userDoc.exists()) {
         let coins = 0;
-        if(isValidRef){
-          coins = is_premium ? 10000 : 2500;
+        let friends = [];
+        const refDocRef = doc(db, "users", refId);
+        if (refId !== id.toString()) {
+          const refDoc = await getDoc(refDocRef);
+          if (refDoc.exists()) {
+            coins = is_premium ? 10000 : 2500;
+            const ref = refDoc.data();
+            const newCoins = is_premium ? 25000 : 5000;
+            friends.push({
+              id: refId,
+              username: ref.username,
+              coins: newCoins,
+              timestamp: serverTimestamp(),
+            });
+            await updateDoc(refDocRef, {
+              coins: increment(newCoins),
+              friends: arrayUnion({
+                id: `${id}`,
+                username: username,
+                coins: coins,
+                timestamp: serverTimestamp(),
+              }),
+            });
+          }
         }
 
         await setDoc(
           userDocRef,
-          { username: username, coins: coins },
+          {
+            username: username,
+            coins: coins,
+            friends: friends,
+            createTime: serverTimestamp(),
+          },
           { merge: true }
         );
-      }
-
-      if (isValidRef) {
-        const refDocRef = doc(db, "users", refId);
-        const refDoc = await getDoc(refDocRef);
-        if (refDoc.exists()) {
-          const newCoins = refDoc.data().coins + (is_premium ? 25000 : 5000);
-          await updateDoc(refDocRef, { coins: newCoins });
-        }
       }
 
       console.log("Transaction successfully committed!");
