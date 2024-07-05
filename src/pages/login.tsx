@@ -61,7 +61,7 @@ export default function Login() {
       }
     };
 
-    if (router.isReady) {
+    if (router.isReady && webApp) {
       login();
     }
   }, [router, webApp]);
