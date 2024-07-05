@@ -11,61 +11,107 @@ import { Tooltip } from "react-tooltip";
 export default function Friends({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const refUrl=`https://t.me/temecoin_bot?start=${session.tgChatId}`;
-  const message="Play with me, become the pioneer Set To DOMINATE All Memes and get a token airdrop!\
+  const refUrl = `https://t.me/temecoin_bot?start=${session.tgChatId}`;
+  const message =
+    "Play with me, become the pioneer Set To DOMINATE All Memes and get a token airdrop!\
   💸 +2k Coins as a first-time gift\
   🔥 +25k Coins if you have Telegram Premium";
-  const [isOpen, setIsOpen]=useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleCopyClick=()=>{
+  const handleCopyClick = () => {
     navigator.clipboard.writeText(refUrl);
     setIsOpen(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setIsOpen(false);
-    },3000)
-  }
+    }, 3000);
+  };
+
+  const renderFriends = () => {
+    if (session.friends && session.friends.length > 0) {
+      return session.friends.map(({ id, username, coins }) => (
+        <div key={id} className={styles.friend}>
+          {username}
+        </div>
+      ));
+    }
+
+    return "You haven't invited anyone yet";
+  };
+
   return (
     <Layout>
       <div className={styles.container}>
         <div className={styles.title}>
           <div className={styles.main}>Invite friends!</div>
-          <div className={styles.sub}>You and your friend will receive bonuses</div>
+          <div className={styles.sub}>
+            You and your friend will receive bonuses
+          </div>
         </div>
         <div className={styles.rewards}>
           <div className={styles.item}>
-            <Image src={"/images/gift1.png"} width={48} height={48} alt="gift1" />
+            <Image
+              src={"/images/gift1.png"}
+              width={48}
+              height={48}
+              alt="gift1"
+            />
             <div className={styles.content}>
               <div className={styles.title}>Invite a friend</div>
               <div className={styles.sub}>
-                <Image src="/images/coins.png" width={20} height={20} alt=""/>
-                <div><span className={styles.number}>+5,000</span> for you and <span className={styles.number}>+2,500</span> for your friend</div>
+                <Image src="/images/coins.png" width={20} height={20} alt="" />
+                <div>
+                  <span className={styles.number}>+5,000</span> for you and{" "}
+                  <span className={styles.number}>+2,500</span> for your friend
+                </div>
               </div>
             </div>
           </div>
           <div className={styles.item}>
-            <Image src={"/images/gift2.png"} width={48} height={48} alt="gift2" />
+            <Image
+              src={"/images/gift2.png"}
+              width={48}
+              height={48}
+              alt="gift2"
+            />
             <div className={styles.content}>
-              <div className={styles.title}>Invite a friend with Telegram Premium</div>
+              <div className={styles.title}>
+                Invite a friend with Telegram Premium
+              </div>
               <div className={styles.sub}>
-                <Image src="/images/coins.png" width={20} height={20} alt=""/>
-                <div><span className={styles.number}>+25,000</span> for you and <span className={styles.number}>+10,000</span> for your friend</div>
+                <Image src="/images/coins.png" width={20} height={20} alt="" />
+                <div>
+                  <span className={styles.number}>+25,000</span> for you and{" "}
+                  <span className={styles.number}>+10,000</span> for your friend
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div className={styles["friend-list"]}>
           <div className={styles.title}>List of your friends (2)</div>
-          <div className={styles.list}>
-            You haven&apos;t invited anyone yet
-          </div>
+          <div className={styles.list}>{renderFriends()}</div>
         </div>
         <div className={styles.buttons}>
-          <a target="_blank" href={`https://t.me/share/url?url=${refUrl}&text=${message}`} className={styles["btn-invite"]} title="inviteFriends">+ Invite a friend</a>
-          <button id="btn-copy" className={styles["btn-copy"]} onClick={handleCopyClick}><IconCopy/></button>
+          <a
+            target="_blank"
+            href={`https://t.me/share/url?url=${refUrl}&text=${message}`}
+            className={styles["btn-invite"]}
+            title="inviteFriends"
+          >
+            + Invite a friend
+          </a>
+          <button
+            id="btn-copy"
+            className={styles["btn-copy"]}
+            onClick={handleCopyClick}
+          >
+            <IconCopy />
+          </button>
         </div>
       </div>
       <Tooltip anchorSelect="#btn-copy" content="Copied!" isOpen={isOpen} />
-    </Layout>);
+    </Layout>
+  );
 }
 
 export const getServerSideProps = (async (context) => {

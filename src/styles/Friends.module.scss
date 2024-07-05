@@ -1,138 +1,153 @@
-.container{
-    padding: 15px;
-    display: inline-flex;
+.container {
+  padding: 15px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+
+  .title {
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
+    align-items: center;
+    gap: 4px;
 
-    .title{
+    .main {
+      color: var(--White, #fff);
+      text-align: center;
+      font-family: Poppins;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .sub {
+      color: #fff;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+
+  .rewards {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 5px;
+
+      .content {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
+
+        .title {
+          color: var(--White, #fff);
+          font-family: Poppins;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        .sub {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: var(--White, #fff);
+          font-family: Poppins;
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+
+          .number {
+            color: var(--Yellow, #fff175);
+          }
+        }
+      }
+    }
+  }
+
+  .friend-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .title {
+      color: var(--White, #fff);
+      font-family: Poppins;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    .list {
+      width: 100%;
+      height: 120px;
+      overflow: auto;
+
+      .friend {
+        display: flex;
+        width: 460px;
+        height: 76px;
+        padding: 12px;
+        justify-content: space-between;
         align-items: center;
-        gap: 4px;
+        border-radius: 16px;
+        background: var(--Background, #003b51);
+        box-shadow: 0px 0px 8px 0px rgba(0, 193, 255, 0.8) inset;
+      }
+    }
+  }
 
-        .main{
-            color: var(--White, #FFF);
-            text-align: center;
-            font-family: Poppins;
-            font-size: 24px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
+  .buttons {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
 
-        .sub{
-            color: #FFF;
-            text-align: center;
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: normal;
-        }
+    .btn-invite {
+      width: 360px;
+      padding: 15px 35px;
+      border-radius: 8px;
+      border: 3px solid rgba(89, 210, 249, 0.5);
+      background: var(
+        --Gradient,
+        linear-gradient(180deg, #59d2f9 -60.17%, #00a3ff 100%)
+      );
+      color: #fff;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+
+      &:active {
+        top: 2px;
+      }
     }
 
-    .rewards{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-
-        .item{
-            display: flex;
-            align-items: flex-start;
-            gap: 4px;
-            padding: 5px;
-
-            .content{
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-
-                .title{
-                    color: var(--White, #FFF);
-                    font-family: Poppins;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-                }
-
-                .sub{
-                    display: flex;
-                    align-items: center;
-                    gap: 4px;
-                    color: var(--White, #FFF);
-                    font-family: Poppins;
-                    font-size: 12px;
-                    font-style: normal;
-                    font-weight: 400;
-                    line-height: normal;
-
-                    .number{
-                        color: var(--Yellow, #FFF175);
-                    }
-                }
-            }
-        }
+    .btn-copy {
+      width: 76px;
+      padding: 13px;
+      text-align: center;
+      border-radius: 8px;
+      border: 3px solid rgba(89, 210, 249, 0.5);
+      background: linear-gradient(180deg, #59d2f9 -60.17%, #00a3ff 100%);
+      &:active {
+        top: 2px;
+      }
     }
-
-    .friend-list{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-
-        .title{
-            color: var(--White, #FFF);
-            font-family: Poppins;
-            font-size: 14px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-        }
-
-        .list{
-            width: 100%;
-            height: 120px;
-            overflow: auto;
-        }
-    }
-
-    .buttons{
-        display: inline-flex;
-        align-items: flex-start;
-        gap: 10px;
-
-        .btn-invite{
-            width: 360px;
-            padding: 15px 35px;
-            border-radius: 8px;
-            border: 3px solid rgba(89, 210, 249, 0.50);
-            background: var(--Gradient, linear-gradient(180deg, #59D2F9 -60.17%, #00A3FF 100%));
-            color: #FFF;
-            text-align: center;
-            font-family: Poppins;
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 700;
-            line-height: normal;
-
-            &:active{
-                top: 2px;
-            }
-        }
-
-        .btn-copy{
-            width: 76px;
-            padding: 13px;
-            text-align: center;
-            border-radius: 8px;
-            border: 3px solid rgba(89, 210, 249, 0.50);
-            background: linear-gradient(180deg, #59D2F9 -60.17%, #00A3FF 100%);
-            &:active{
-                top: 2px;
-            }
-        }
-    }
+  }
 }
