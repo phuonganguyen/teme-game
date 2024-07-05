@@ -37,6 +37,7 @@ export default async function handler(
       session.username = user.username;
       session.hash = tgHash;
       session.coins = user.coins;
+      session.friends = user.friends;
       await session.save();
       res.status(200).json({ isLoggedIn: true });
       return;

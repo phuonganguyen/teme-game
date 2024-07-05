@@ -9,6 +9,13 @@ export const sessionOptions: SessionOptions = {
   },
 };
 
+interface Friend {
+  id: string;
+  username: string;
+  coins: number;
+  time: Date;
+}
+
 // This is where we specify the typings of req.session.*
 declare module "iron-session" {
   interface IronSessionData {
@@ -17,5 +24,6 @@ declare module "iron-session" {
     username: string;
     coins: number;
     hash: string;
+    friends: Friend[];
   }
 }
