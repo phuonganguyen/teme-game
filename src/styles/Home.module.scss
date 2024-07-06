@@ -25,7 +25,7 @@
 
       .name {
         display: flex;
-        padding: 5.148px 5.148px 5.148px 12.87px;
+        padding: 5.148px 5.148px 5.148px 5.87px;
         justify-content: center;
         align-items: center;
         gap: 6.435px;
@@ -34,9 +34,10 @@
           width: 85.583px;
           height: 25.739px;
           position: absolute;
-          left: -3.861px;
+          left: 41.139px;
           border-radius: 0px 7.722px 7.722px 0px;
           background: #dc68b5;
+          z-index: -1;
         }
       }
     }
