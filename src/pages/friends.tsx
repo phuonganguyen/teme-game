@@ -33,14 +33,14 @@ export default function Friends({
           <div className={styles.left}>
             <Image
               src={"/images/friend_cat.png"}
-              width={50}
-              height={50}
+              width={32}
+              height={32}
               alt={id}
             />
             <div>{username}</div>
           </div>
           <div className={styles.right}>
-            <Image src={"/images/coins.png"} width={50} height={50} alt="c" />
+            <Image src={"/images/coins.png"} width={25} height={25} alt="c" />
             <div>{`+ ${coins}`}</div>
           </div>
         </div>
