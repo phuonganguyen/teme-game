@@ -43,6 +43,7 @@ export default function Index({
             alt="cat"
           />
         </div>
+        <div className={styles["coming-soon"]}>Coming Soon!</div>
       </div>
     </Layout>
   );

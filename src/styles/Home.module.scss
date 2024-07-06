@@ -74,4 +74,15 @@
     align-items: center;
     gap: 4px;
   }
+
+  .coming-soon {
+    color: var(--Yellow, #fff175);
+    text-align: center;
+    text-shadow: 0px 0px 8px rgba(255, 241, 117, 0.6);
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
 }
