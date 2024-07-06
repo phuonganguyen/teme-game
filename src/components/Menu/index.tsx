@@ -75,7 +75,7 @@ export default function Menu() {
           />
           Mining
         </MenuItem>
-        <MenuItem href={"/battle"}>
+        <MenuItem href={"#"}>
           <Image
             src={"/images/menu/Battle.png"}
             width={40}
@@ -93,7 +93,7 @@ export default function Menu() {
           />
           Friends
         </MenuItem>
-        <MenuItem href={"/task"}>
+        <MenuItem href={"#"}>
           <Image
             src={"/images/menu/Task.png"}
             width={40}
@@ -102,7 +102,7 @@ export default function Menu() {
           />
           Task
         </MenuItem>
-        <MenuItem href={"/connect"}>
+        <MenuItem href={"#"}>
           <Image
             src={"/images/menu/wallet.png"}
             width={40}
