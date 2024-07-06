@@ -69,8 +69,8 @@ export default function Menu() {
         <MenuItem href={"/"}>
           <Image
             src={"/images/menu/Mine.png"}
-            width={40}
-            height={40}
+            width={26}
+            height={26}
             alt="Binance"
           />
           Mining
@@ -78,8 +78,8 @@ export default function Menu() {
         <MenuItem href={"#"}>
           <Image
             src={"/images/menu/Battle.png"}
-            width={40}
-            height={40}
+            width={26}
+            height={26}
             alt="Battle"
           />
           Battle
@@ -87,8 +87,8 @@ export default function Menu() {
         <MenuItem href={"/friends"}>
           <Image
             src={"/images/menu/friend.png"}
-            width={40}
-            height={40}
+            width={26}
+            height={26}
             alt="friend"
           />
           Friends
@@ -96,8 +96,8 @@ export default function Menu() {
         <MenuItem href={"#"}>
           <Image
             src={"/images/menu/Task.png"}
-            width={40}
-            height={40}
+            width={26}
+            height={26}
             alt="Task"
           />
           Task
@@ -105,8 +105,8 @@ export default function Menu() {
         <MenuItem href={"#"}>
           <Image
             src={"/images/menu/wallet.png"}
-            width={40}
-            height={40}
+            width={26}
+            height={26}
             alt="wallet"
           />
           Connect
