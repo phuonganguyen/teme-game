@@ -2,6 +2,7 @@ import { IconCopy } from "@/components/Icons";
 import Layout from "@/components/Layout";
 import { sessionOptions } from "@/libs/session";
 import styles from "@/styles/Friends.module.scss";
+import { formatNumber } from "@/utils";
 import { IronSessionData, getIronSession } from "iron-session";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
@@ -41,7 +42,7 @@ export default function Friends({
           </div>
           <div className={styles.right}>
             <Image src={"/images/coins.png"} width={25} height={25} alt="c" />
-            <div>{`+ ${coins}`}</div>
+            <div>{`+ ${formatNumber(coins)}`}</div>
           </div>
         </div>
       ));
@@ -100,7 +101,9 @@ export default function Friends({
           </div>
         </div>
         <div className={styles["friend-list"]}>
-          <div className={styles.title}>List of your friends (2)</div>
+          <div className={styles.title}>
+            {`List of your friends (${session.friends?.length || 0})`}
+          </div>
           <div className={styles.list}>{renderFriends()}</div>
         </div>
         <div className={styles.buttons}>

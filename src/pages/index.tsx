@@ -4,6 +4,7 @@ import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import styles from "@/styles/Home.module.scss";
 import Image from "next/image";
 import Layout from "@/components/Layout";
+import { formatNumber } from "@/utils";
 
 export default function Index({
   session,
@@ -22,7 +23,7 @@ export default function Index({
         </div>
         <div className={styles.coin}>
           <Image src="/images/coins.png" width={70} height={70} alt="coins" />
-          {session.coins}
+          {formatNumber(session.coins)}
         </div>
         <div className={styles.cat}>
           <Image
