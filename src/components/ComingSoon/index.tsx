@@ -6,8 +6,8 @@ export default function ComingSoon() {
     <div className={styles.container}>
       <Image
         src={"/images/coming_soon.png"}
-        width={225}
-        height={225}
+        width={261}
+        height={261}
         alt="coming_soon"
       />
       <div className={styles.text}>Coming Soon!</div>
