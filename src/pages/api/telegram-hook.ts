@@ -46,15 +46,17 @@ export async function handleOnMessage(ctx: Context) {
 
 bot.start(async (ctx) => {
   const { args, message } = ctx;
-  let coins = 0;
-  let friends = [];
-  if (args.length > 0) {
-    const refId = args[0];
-    const { id, is_premium, username } = message.from;
-    try {
-      const userDocRef = doc(db, "users", `${id}`);
-      const userDoc = await getDoc(userDocRef);
-      if (!userDoc.exists()) {
+
+  const { id, is_premium, username } = message.from;
+  try {
+    const userDocRef = doc(db, "users", `${id}`);
+    const userDoc = await getDoc(userDocRef);
+    if (!userDoc.exists()) {
+      let coins = 0;
+      let friends = [];
+      if (args.length > 0) {
+        const refId = args[0];
+
         const refDocRef = doc(db, "users", refId);
         if (refId !== id.toString()) {
           const refDoc = await getDoc(refDocRef);
@@ -93,11 +95,12 @@ bot.start(async (ctx) => {
         },
         { merge: true }
       );
-      console.log("Transaction successfully committed!");
-    } catch (e) {
-      ctx.reply(JSON.stringify(e));
-      console.log("Transaction failed: ", e);
     }
+
+    console.log("Transaction successfully committed!");
+  } catch (e) {
+    ctx.reply(JSON.stringify(e));
+    console.log("Transaction failed: ", e);
   }
 
   await handleOnMessage(ctx);
