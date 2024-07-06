@@ -52,13 +52,13 @@ export default function Login() {
 
       const authData = await response.json();
 
-      if (authData.isLoggedIn) {
-        setTimeout(() => {
-          router.push("/");
-        }, 3000);
-      } else {
-        router.push("/unauthorized");
-      }
+      // if (authData.isLoggedIn) {
+      //   setTimeout(() => {
+      //     router.push("/");
+      //   }, 3000);
+      // } else {
+      //   router.push("/unauthorized");
+      // }
     };
 
     if (router.isReady && webApp) {
@@ -71,16 +71,16 @@ export default function Login() {
       <div className={styles.cat}>
         <Image
           src={"/images/loading/cat.png"}
-          width={250}
-          height={250}
+          width={202}
+          height={202}
           alt="cat-loading"
         />
       </div>
       <div className={styles.content}>
         <Image
           src={"/images/loading/teme.svg"}
-          width={225}
-          height={65}
+          width={161}
+          height={51}
           alt="teme-loading"
         />
         <div className={styles.text}>
@@ -97,26 +97,26 @@ export default function Login() {
         <div className={styles.icons}>
           <Image
             src={"/images/loading/Icon_web.png"}
-            width={49}
-            height={49}
+            width={40}
+            height={40}
             alt="web"
           />
           <Image
             src={"/images/loading/Icon_X.png"}
-            width={49}
-            height={49}
+            width={40}
+            height={40}
             alt="x"
           />
           <Image
             src={"/images/loading/Icon_TELE.png"}
-            width={49}
-            height={49}
+            width={40}
+            height={40}
             alt="tele"
           />
           <Image
             src={"/images/loading/Icon_Youtube.png"}
-            width={49}
-            height={49}
+            width={40}
+            height={40}
             alt="youtube"
           />
         </div>
