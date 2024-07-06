@@ -67,7 +67,7 @@ bot.start(async (ctx) => {
             friends.push({
               id: refId,
               username: ref.username,
-              coins: newCoins,
+              coins: coins,
               time: Date.now(),
             });
 
@@ -76,7 +76,7 @@ bot.start(async (ctx) => {
               friends: arrayUnion({
                 id: `${id}`,
                 username: username,
-                coins: coins,
+                coins: newCoins,
                 time: Date.now(),
               }),
             });
