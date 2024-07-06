@@ -38,8 +38,8 @@ export default function Index({
         <div className={styles.cat}>
           <Image
             src={"/images/cats/level_1.png"}
-            width={151.83}
-            height={210.417}
+            width={225}
+            height={225}
             alt="cat"
           />
         </div>
