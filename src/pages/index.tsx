@@ -38,7 +38,7 @@ export default function Index({
         <div className={styles.cat}>
           <div className={styles.shadow}>
             <Image
-              src={"/images/cat/level_1.png"}
+              src={"/images/cats/level_1.png"}
               width={151.83}
               height={210.417}
               alt="cat"
