@@ -4,7 +4,7 @@ import CryptoJS from "crypto-js";
 import { IronSessionData, getIronSession } from "iron-session";
 import { sessionOptions } from "@/libs/session";
 import db from "@/libs/firestore";
-import { doc, getDoc, setDoc } from "@firebase/firestore";
+import { doc, getDoc } from "@firebase/firestore";
 
 const TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
 
@@ -36,8 +36,6 @@ export default async function handler(
       session.tgChatId = tgUser.id;
       session.username = user.username;
       session.level = user.level;
-      session.coins = user.coins;
-      session.friends = user.friends;
       session.hash = tgHash;
 
       await session.save();

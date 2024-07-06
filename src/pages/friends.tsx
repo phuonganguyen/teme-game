@@ -2,11 +2,12 @@ import { IconCopy } from "@/components/Icons";
 import Layout from "@/components/Layout";
 import { sessionOptions } from "@/libs/session";
 import styles from "@/styles/Friends.module.scss";
+import Friend from "@/types/friend";
 import { formatNumber } from "@/utils";
 import { IronSessionData, getIronSession } from "iron-session";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 
 export default function Friends({
@@ -17,7 +18,21 @@ export default function Friends({
     "Play with me, become the pioneer Set To DOMINATE All Memes and get a token airdrop!\
   💸 +2k Coins as a first-time gift\
   🔥 +25k Coins if you have Telegram Premium";
+
   const [isOpen, setIsOpen] = useState(false);
+  const [friends, setFriends] = useState<Friend[]>([]);
+
+  useEffect(() => {
+    const getFriends = async () => {
+      const response = await fetch("/api/friends");
+      const data = await response.json();
+      setFriends(data.friends);
+    };
+
+    if (session.tgChatId) {
+      getFriends();
+    }
+  }, [session.tgChatId]);
 
   const handleCopyClick = () => {
     navigator.clipboard.writeText(refUrl);
@@ -28,8 +43,8 @@ export default function Friends({
   };
 
   const renderFriends = () => {
-    if (session.friends && session.friends.length > 0) {
-      return session.friends.map(({ id, username, coins }) => (
+    if (friends && friends.length > 0) {
+      return friends.map(({ id, username, coins }) => (
         <div key={id} className={styles.friend}>
           <div className={styles.left}>
             <Image
@@ -117,7 +132,7 @@ export default function Friends({
 
         <div className={styles["friend-list"]}>
           <div className={styles.title}>
-            {`Total friends (${session.friends?.length || 0})`}
+            {`Total friends (${friends.length})`}
           </div>
           <div className={styles.list}>{renderFriends()}</div>
         </div>

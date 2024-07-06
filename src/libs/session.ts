@@ -23,8 +23,6 @@ declare module "iron-session" {
     tgChatId: number;
     username: string;
     level: number;
-    coins: number;
     hash: string;
-    friends: Friend[];
   }
 }

@@ -5,10 +5,25 @@ import styles from "@/styles/Home.module.scss";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
+import { useEffect, useState } from "react";
 
 export default function Index({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [coins, setCoins] = useState(0);
+
+  useEffect(() => {
+    const getCoins = async () => {
+      const response = await fetch("/api/coins");
+      const data = await response.json();
+      setCoins(data.coins);
+    };
+
+    if (session.tgChatId) {
+      getCoins();
+    }
+  }, [session.tgChatId]);
+
   return (
     <Layout>
       <div className={styles.mining}>
@@ -33,7 +48,7 @@ export default function Index({
         </div>
         <div className={styles.coin}>
           <Image src="/images/coins.png" width={50} height={50} alt="coins" />
-          {formatNumber(session.coins)}
+          {formatNumber(coins)}
         </div>
         <div className={styles.cat}>
           <Image
