@@ -130,13 +130,9 @@ export default function Friends({
           >
             + Invite a friend
           </a>
-          <button
-            id="btn-copy"
-            className={styles["btn"]}
-            onClick={handleCopyClick}
-          >
+          <a id="btn-copy" className={styles["btn"]} onClick={handleCopyClick}>
             <IconCopy />
-          </button>
+          </a>
         </div>
       </div>
       <Tooltip anchorSelect="#btn-copy" content="Copied!" isOpen={isOpen} />
