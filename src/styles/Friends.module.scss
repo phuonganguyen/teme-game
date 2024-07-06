@@ -106,6 +106,12 @@
         border-radius: 16px;
         background: var(--Background, #003b51);
         box-shadow: 0px 0px 8px 0px rgba(0, 193, 255, 0.8) inset;
+
+        .left, .right {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+        }
       }
     }
   }
