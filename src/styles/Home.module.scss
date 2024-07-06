@@ -1,55 +1,76 @@
-.mining{
-    display: inline-flex;
-    flex-direction: column;
+.mining {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 15px;
+  width: 100%;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
-    padding: 15px;
     width: 100%;
 
-    .top{
+    .username {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      width: 100%;
+      align-items: center;
+      gap: -7.722px;
+      color: #fff;
+      font-family: Poppins;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
 
-      .username{
+      .name {
         display: flex;
+        padding: 5.148px 5.148px 5.148px 12.87px;
+        justify-content: center;
         align-items: center;
-        gap: 12px;
-        color: #FFF;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-      }
+        gap: 6.435px;
 
-      .btn-exchange{
-        height: 50px;
-        padding: 9px 12px;
-        border-radius: 16px;
-        background: #003B51;
+        .bg {
+          width: 85.583px;
+          height: 25.739px;
+          position: absolute;
+          left: -3.861px;
+          bottom: -0.444px;
+        }
       }
     }
 
-    .coin{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #FFF;
-
+    .btn-exchange {
+      height: 15px;
+      padding: 6px;
+      border-radius: 16px;
+      background: #003b51;
+      color: var(--White, #fff);
       font-family: Poppins;
-      font-size: 40px;
+      font-size: 10px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
     }
-
-    .cat{
-      width: 350px;
-      height: 350px;
-      flex-shrink: 0;
-      border-radius: 1000px;
-      
-    }
   }
+
+  .coin {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  .cat {
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+    border-radius: 1000px;
+  }
+}

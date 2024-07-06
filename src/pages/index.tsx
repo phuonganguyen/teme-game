@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.scss";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
+import UsernameBG from "@/styles/usernambg.svg";
 
 export default function Index({
   session,
@@ -14,8 +15,13 @@ export default function Index({
       <div className={styles.mining}>
         <div className={styles.top}>
           <div className={styles.username}>
-            <Image src="/images/logo.png" width={50} height={50} alt="logo" />
-            {session.username}
+            <Image src="/images/logo.png" width={32} height={32} alt="logo" />
+            <div className={styles.name}>
+              <div className={styles.bg}>
+                <UsernameBG/>
+              </div>
+              {session.username}
+            </div>
           </div>
           <button className={styles["btn-exchange"]}>
             Choose your exchange
