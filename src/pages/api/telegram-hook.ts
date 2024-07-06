@@ -88,6 +88,7 @@ bot.start(async (ctx) => {
             coins: coins,
             friends: friends,
             joinTime: Date.now(),
+            level: 1,
           },
           { merge: true }
         );
