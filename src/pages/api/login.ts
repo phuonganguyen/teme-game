@@ -33,7 +33,7 @@ export default async function handler(
     if (userSnap.exists()) {
       user = userSnap.data();
       session.isLoggedIn = true;
-      session.tgChatId = user.id;
+      session.tgChatId = tgUser.id;
       session.username = user.username;
       session.level = user.level;
       session.coins = user.coins;
