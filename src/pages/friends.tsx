@@ -125,14 +125,14 @@ export default function Friends({
           <a
             target="_blank"
             href={`https://t.me/share/url?url=${refUrl}&text=${message}`}
-            className={styles["btn-invite"]}
+            className={`${styles["btn"]} ${styles["btn-invite"]}`}
             title="inviteFriends"
           >
             + Invite a friend
           </a>
           <button
             id="btn-copy"
-            className={styles["btn-copy"]}
+            className={styles["btn"]}
             onClick={handleCopyClick}
           >
             <IconCopy />
