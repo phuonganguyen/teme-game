@@ -5,7 +5,6 @@ import styles from "@/styles/Home.module.scss";
 import Image from "next/image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
-import UsernameBG from "@/styles/usernambg.svg";
 
 export default function Index({
   session,
@@ -17,9 +16,7 @@ export default function Index({
           <div className={styles.username}>
             <Image src="/images/logo.png" width={32} height={32} alt="logo" />
             <div className={styles.name}>
-              <div className={styles.bg}>
-                <UsernameBG/>
-              </div>
+              <div className={styles.bg}></div>
               {session.username}
             </div>
           </div>
