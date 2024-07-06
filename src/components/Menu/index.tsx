@@ -68,7 +68,7 @@ export default function Menu() {
       <div className={styles.menu}>
         <MenuItem href={"/"}>
           <Image
-            src={"/images/home/menu/Binance.png"}
+            src={"/images/menu/Mine.png"}
             width={40}
             height={40}
             alt="Binance"
@@ -77,7 +77,7 @@ export default function Menu() {
         </MenuItem>
         <MenuItem href={"/battle"}>
           <Image
-            src={"/images/home/menu/Battle.png"}
+            src={"/images/menu/Battle.png"}
             width={40}
             height={40}
             alt="Battle"
@@ -86,7 +86,7 @@ export default function Menu() {
         </MenuItem>
         <MenuItem href={"/friends"}>
           <Image
-            src={"/images/home/menu/friend.png"}
+            src={"/images/menu/friend.png"}
             width={40}
             height={40}
             alt="friend"
@@ -95,7 +95,7 @@ export default function Menu() {
         </MenuItem>
         <MenuItem href={"/task"}>
           <Image
-            src={"/images/home/menu/Task.png"}
+            src={"/images/menu/Task.png"}
             width={40}
             height={40}
             alt="Task"
@@ -104,7 +104,7 @@ export default function Menu() {
         </MenuItem>
         <MenuItem href={"/connect"}>
           <Image
-            src={"/images/home/menu/wallet.png"}
+            src={"/images/menu/wallet.png"}
             width={40}
             height={40}
             alt="wallet"
