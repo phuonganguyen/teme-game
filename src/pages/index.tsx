@@ -36,14 +36,12 @@ export default function Index({
           {formatNumber(session.coins)}
         </div>
         <div className={styles.cat}>
-          <div className={styles.shadow}>
-            <Image
-              src={"/images/cats/level_1.png"}
-              width={151.83}
-              height={210.417}
-              alt="cat"
-            />
-          </div>
+          <Image
+            src={"/images/cats/level_1.png"}
+            width={151.83}
+            height={210.417}
+            alt="cat"
+          />
         </div>
       </div>
     </Layout>
