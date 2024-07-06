@@ -52,13 +52,13 @@ export default function Login() {
 
       const authData = await response.json();
 
-      // if (authData.isLoggedIn) {
-      //   setTimeout(() => {
-      //     router.push("/");
-      //   }, 3000);
-      // } else {
-      //   router.push("/unauthorized");
-      // }
+      if (authData.isLoggedIn) {
+        setTimeout(() => {
+          router.push("/");
+        }, 3000);
+      } else {
+        router.push("/unauthorized");
+      }
     };
 
     if (router.isReady && webApp) {
