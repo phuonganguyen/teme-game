@@ -16,7 +16,14 @@ export default function Index({
           <div className={styles.username}>
             <Image src="/images/logo.png" width={32} height={32} alt="logo" />
             <div className={styles.name}>
-              <div className={styles.bg}></div>
+              <div className={styles.bg}>
+                <Image
+                  src={"/images/home/usernamebg.svg"}
+                  width={85.583}
+                  height={25.739}
+                  alt=""
+                />
+              </div>
               {session.username}
             </div>
           </div>
