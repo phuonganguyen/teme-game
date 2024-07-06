@@ -32,7 +32,7 @@ export default function Index({
           </button>
         </div>
         <div className={styles.coin}>
-          <Image src="/images/coins.png" width={70} height={70} alt="coins" />
+          <Image src="/images/coins.png" width={50} height={50} alt="coins" />
           {formatNumber(session.coins)}
         </div>
         <div className={styles.cat}>
