@@ -38,6 +38,10 @@ export default function Login() {
 
   useEffect(() => {
     const login = async () => {
+      if (webApp?.platform == "web") {
+        router.push("/unsupport");
+      }
+
       const telegramInitData = webApp?.initData;
 
       if (!telegramInitData) {
