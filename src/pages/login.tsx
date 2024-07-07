@@ -40,12 +40,14 @@ export default function Login() {
     const login = async () => {
       if (webApp?.platform == "web") {
         router.push("/unsupport");
+        return;
       }
 
       const telegramInitData = webApp?.initData;
 
       if (!telegramInitData) {
         router.push("/unauthorized");
+        return;
       }
 
       const response = await fetch("/api/login", {
