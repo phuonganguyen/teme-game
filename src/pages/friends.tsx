@@ -1,5 +1,6 @@
 import { IconCopy } from "@/components/Icons";
 import Layout from "@/components/Layout";
+import Title from "@/components/Title";
 import { sessionOptions } from "@/libs/session";
 import styles from "@/styles/Friends.module.scss";
 import Friend from "@/types/friend";
@@ -70,12 +71,10 @@ export default function Friends({
     <Layout>
       <div className={styles.container}>
         <div className={styles.intro}>
-          <div className={styles.title}>
-            <div className={styles.main}>Invite friends!</div>
-            <div className={styles.sub}>
-              You and your friend will receive bonuses
-            </div>
-          </div>
+          <Title
+            main="Invite friends!"
+            sub="You and your friend will receive bonuses"
+          />
           <div className={styles.rewards}>
             <div className={styles.item}>
               <Image
