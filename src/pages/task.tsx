@@ -1,3 +1,4 @@
+import ComingSoon from "@/components/ComingSoon";
 import Layout from "@/components/Layout";
 import Title from "@/components/Title";
 
@@ -7,10 +8,7 @@ import Image from "next/image";
 export default function Task() {
   return (
     <Layout>
-      <div className={styles.container}>
-        <Title main="Earn more coins" />
-        <Image src={"/images/task/cat.png"} width={190} height={190} alt="task_cat" />
-      </div>
+      <ComingSoon />
     </Layout>
   );
 }
