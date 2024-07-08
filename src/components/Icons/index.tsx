@@ -1,8 +1,15 @@
-export const IconCopy = () => (
+import Image from "next/image";
+
+type Props = {
+  width?: number;
+  height?: number;
+};
+
+export const IconCopy = ({ width = 16, height = 16 }: Props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
+    width={width}
+    height={height}
     viewBox="0 0 16 16"
     fill="none"
   >
@@ -11,4 +18,28 @@ export const IconCopy = () => (
       fill="white"
     />
   </svg>
+);
+
+export const IconArrow = ({ width = 16, height = 16 }: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 16 17"
+    fill="none"
+  >
+    <path
+      d="M8.39967 8.5L5.33301 5.43333L6.26634 4.5L10.2663 8.5L6.26634 12.5L5.33301 11.5667L8.39967 8.5Z"
+      fill="#59D2F9"
+    />
+  </svg>
+);
+
+export const IconCalendar = ({ width = 32, height = 32 }: Props) => (
+  <Image
+    src={"/images/icons/calendar.png"}
+    width={width}
+    height={height}
+    alt=""
+  />
 );

@@ -1,0 +1,24 @@
+.task-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--White, #fff);
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  .reward {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    color: var(--Yellow, #fff175);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
