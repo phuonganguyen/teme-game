@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Login.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { IconTelegram, IconWeb, IconX, IconYoutube } from "@/components/Icons";
 
 export default function Login() {
   const router = useRouter();
@@ -101,30 +102,10 @@ export default function Login() {
           {currentValue}%
         </progress>
         <div className={styles.icons}>
-          <Image
-            src={"/images/loading/Icon_web.png"}
-            width={40}
-            height={40}
-            alt="web"
-          />
-          <Image
-            src={"/images/loading/Icon_X.png"}
-            width={40}
-            height={40}
-            alt="x"
-          />
-          <Image
-            src={"/images/loading/Icon_TELE.png"}
-            width={40}
-            height={40}
-            alt="tele"
-          />
-          <Image
-            src={"/images/loading/Icon_Youtube.png"}
-            width={40}
-            height={40}
-            alt="youtube"
-          />
+          <IconWeb height={40} width={40} />
+          <IconX height={40} width={40} />
+          <IconTelegram height={40} width={40} />
+          <IconYoutube height={40} width={40} />
         </div>
       </div>
     </div>

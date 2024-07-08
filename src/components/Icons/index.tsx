@@ -43,3 +43,39 @@ export const IconCalendar = ({ width = 32, height = 32 }: Props) => (
     alt=""
   />
 );
+
+export const IconTelegram = ({ width = 32, height = 32 }: Props) => (
+  <Image
+    src={"/images/icons/Icon_TELE.png"}
+    width={width}
+    height={height}
+    alt=""
+  />
+);
+
+export const IconWeb = ({ width = 32, height = 32 }: Props) => (
+  <Image
+    src={"/images/icons/Icon_web.png"}
+    width={width}
+    height={height}
+    alt=""
+  />
+);
+
+export const IconX = ({ width = 32, height = 32 }: Props) => (
+  <Image
+    src={"/images/icons/Icon_X.png"}
+    width={width}
+    height={height}
+    alt=""
+  />
+);
+
+export const IconYoutube = ({ width = 32, height = 32 }: Props) => (
+  <Image
+    src={"/images/icons/Icon_Youtube.png"}
+    width={width}
+    height={height}
+    alt=""
+  />
+);

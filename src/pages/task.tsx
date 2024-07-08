@@ -1,5 +1,5 @@
 import ComingSoon from "@/components/ComingSoon";
-import { IconCalendar } from "@/components/Icons";
+import { IconCalendar, IconX } from "@/components/Icons";
 import Layout from "@/components/Layout";
 import TaskDetail from "@/components/TaskDetail";
 import TaskItem from "@/components/TaskItem";
@@ -28,6 +28,14 @@ export default function Task() {
             <TaskItem href={"#"}>
               <IconCalendar />
               <TaskDetail name="Checkin daily" coinReward={5000} />
+            </TaskItem>
+            <TaskItem href={"#"}>
+              <IconX />
+              <TaskDetail name="Retweet post" coinReward={5000} />
+            </TaskItem>
+            <TaskItem href={"#"}>
+              <IconX />
+              <TaskDetail name="Retweet post" coinReward={5000} />
             </TaskItem>
           </div>
         </div>
