@@ -13,12 +13,15 @@ export default function Task() {
     <Layout>
       <div className={styles.container}>
         <Title main="Earn more coins" />
-        <Image
-          src={"/images/task/cat.png"}
-          height={190}
-          width={190}
-          alt="task_cat"
-        />
+        <div className={styles.cat}>
+          <Image
+            src={"/images/task/cat.png"}
+            height={190}
+            width={190}
+            alt="task_cat"
+          />
+        </div>
+
         <div className={styles.content}>
           <div className={styles.daily}>
             <div className={styles.title}>Daily tasks</div>
