@@ -82,7 +82,7 @@ export const IconYoutube = ({ width = 32, height = 32 }: Props) => (
 
 export const IconFriends = ({ width = 32, height = 32 }: Props) => (
   <Image
-    src={"/images/icons/friends.png"}
+    src={"/images/icons/friend.png"}
     width={width}
     height={height}
     alt=""
