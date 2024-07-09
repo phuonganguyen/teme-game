@@ -1,6 +1,6 @@
-import ComingSoon from "@/components/ComingSoon";
 import {
   IconCalendar,
+  IconFriends,
   IconTelegram,
   IconX,
   IconYoutube,
@@ -77,7 +77,7 @@ export default function Task() {
               <TaskDetail name="Subscribe our Youtube" coinReward={5000} />
             </TaskItem>
             <TaskItem href={"/friends"}>
-              <IconYoutube />
+              <IconFriends />
               <TaskDetail name="Invite 3 friends" coinReward={15000} />
             </TaskItem>
           </div>

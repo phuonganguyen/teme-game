@@ -79,3 +79,12 @@ export const IconYoutube = ({ width = 32, height = 32 }: Props) => (
     alt=""
   />
 );
+
+export const IconFriends = ({ width = 32, height = 32 }: Props) => (
+  <Image
+    src={"/images/icons/friends.png"}
+    width={width}
+    height={height}
+    alt=""
+  />
+);
