@@ -47,9 +47,9 @@ export default function TaskList() {
         <div className={`${styles.tab} ${styles.active}`}>Task social</div>
         <div className={styles.tab}>Upgrade earn per hour</div>
       </div>
-      {tasks.map(({ id, name, reward }) => (
+      {tasks.map(({ id, icon, name, reward }) => (
         <TaskItem key={id}>
-          <IconTelegram />
+          {icon}
           <TaskDetail name={name} coinReward={reward} />
         </TaskItem>
       ))}
