@@ -3,14 +3,11 @@ import { PropsWithChildren } from "react";
 import Link, { LinkProps } from "next/link";
 import { IconArrow } from "../Icons";
 
-export default function TaskItem({
-  children,
-  ...props
-}: PropsWithChildren<LinkProps>) {
+export default function TaskItem({ children }: PropsWithChildren<{}>) {
   return (
-    <Link className={styles["task-item"]} {...props}>
+    <div className={styles["task-item"]}>
       <div className={styles.content}>{children}</div>
       <IconArrow />
-    </Link>
+    </div>
   );
 }
