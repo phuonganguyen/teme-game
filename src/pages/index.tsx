@@ -6,6 +6,7 @@ import Image from "next/image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Index({
   session,
@@ -49,6 +50,27 @@ export default function Index({
         <div className={styles.coin}>
           <Image src="/images/coins.png" width={50} height={50} alt="coins" />
           {formatNumber(coins)}
+        </div>
+        <div className={styles["top-bar"]}>
+          <Link className={styles.item} href={"/shop"}>
+            <Image
+              src="/images/icons/shop.png"
+              width={26}
+              height={26}
+              alt="shop"
+            />
+            <div className={styles.text}>Shop</div>
+          </Link>
+          <div className={styles.level}></div>
+          <Link className={styles.item} href={"#"}>
+            <Image
+              src="/images/icons/rocket.png"
+              width={26}
+              height={26}
+              alt="shop"
+            />
+            <div className={styles.text}>Boost</div>
+          </Link>
         </div>
         <div className={styles.cat}>
           <Image

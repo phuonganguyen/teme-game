@@ -67,6 +67,12 @@
     line-height: normal;
   }
 
+  .top-bar {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+  }
+
   .cat {
     display: flex;
     width: 225px;
