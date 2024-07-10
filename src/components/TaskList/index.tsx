@@ -88,6 +88,7 @@ export default function TaskList() {
 
   const handleClaim = async () => {
     if (selectedTask) {
+      window.open(selectedTask.url, "_blank");
       const response = await fetch("/api/tasks/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
