@@ -89,8 +89,8 @@ export default function TaskList() {
         </TaskItem>
       ))}
       <Popup open={open} onClose={closeModal}>
-        <div className="modal">
-          <a className="close" onClick={closeModal}>
+        <div className={styles.modal}>
+          <a className={styles.close} onClick={closeModal}>
             &times;
           </a>
           {selectedTask && (
