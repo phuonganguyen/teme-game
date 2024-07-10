@@ -106,16 +106,24 @@ a {
 }
 
 .popup-content {
-  display: flex;
   width: 352px !important;
   padding: 24px !important;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
   border-radius: 16px;
   background: var(--Background, #003b51) !important;
   box-shadow: 0px 0px 24px 0px rgba(0, 152, 234, 0.3),
     0px 0px 8px 0px rgba(0, 193, 255, 0.8) inset;
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .close {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
