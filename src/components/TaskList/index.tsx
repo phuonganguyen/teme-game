@@ -12,6 +12,21 @@ import styles from "./TaskList.module.scss";
 import Popup from "reactjs-popup";
 import Task, { TaskType } from "@/types/task";
 
+const IconClose = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="17"
+    viewBox="0 0 16 17"
+    fill="none"
+  >
+    <path
+      d="M4.26634 13.1668L3.33301 12.2335L7.06634 8.50016L3.33301 4.76683L4.26634 3.8335L7.99967 7.56683L11.733 3.8335L12.6663 4.76683L8.93301 8.50016L12.6663 12.2335L11.733 13.1668L7.99967 9.4335L4.26634 13.1668Z"
+      fill="white"
+    />
+  </svg>
+);
+
 export default function TaskList() {
   const tasks: Task[] = [
     {
@@ -91,7 +106,7 @@ export default function TaskList() {
       <Popup open={open} onClose={closeModal}>
         <div className={styles.modal}>
           <a className={styles.close} onClick={closeModal}>
-            &times;
+            <IconClose />
           </a>
           {selectedTask && (
             <>
