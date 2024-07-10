@@ -46,12 +46,12 @@ export default function Task() {
           </div>
           <div className={styles.tasks}>
             <TaskList />
+            <Popup trigger={<button> Trigger</button>} position="right center">
+              <div>Popup content here !!</div>
+            </Popup>
           </div>
         </div>
       </div>
-      <Popup trigger={<button> Trigger</button>} position="right center">
-        <div>Popup content here !!</div>
-      </Popup>
     </Layout>
   );
 }
