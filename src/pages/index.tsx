@@ -7,6 +7,8 @@ import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { IconLevel1 } from "@/components/Icons/Levels";
+import { IconArrowUp } from "@/components/Icons";
 
 export default function Index({
   session,
@@ -61,7 +63,16 @@ export default function Index({
             />
             <div className={styles.text}>Shop</div>
           </Link>
-          <div className={styles.level}></div>
+          <div className={styles.level}>
+            <IconLevel1 />
+            <div className={styles.process}>
+              <div className={styles.text}>0 / 10K</div>
+            </div>
+            <button className={styles["btn-up"]}>
+              <IconArrowUp />
+              Up
+            </button>
+          </div>
           <Link className={styles.item} href={"#"}>
             <Image
               src="/images/icons/rocket.png"

@@ -35,6 +35,21 @@ export const IconArrow = ({ width = 16, height = 16 }: Props) => (
   </svg>
 );
 
+export const IconArrowUp = ({ width = 16, height = 16 }: Props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={width}
+    height={height}
+    viewBox="0 0 17 17"
+    fill="none"
+  >
+    <path
+      d="M7.56795 12.9653V7.51533L5.16795 9.89867L4.23462 8.96533L8.23462 4.96533L12.2346 8.96533L11.3013 9.89867L8.90129 7.51533V12.9653H7.56795Z"
+      fill="white"
+    />
+  </svg>
+);
+
 export const IconCalendar = ({ width = 32, height = 32 }: Props) => (
   <Image
     src={"/images/icons/calendar.png"}
