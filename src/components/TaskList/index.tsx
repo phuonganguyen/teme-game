@@ -132,7 +132,9 @@ export default function TaskList() {
             setSelectedTask(tasks.find((t) => t.id === id));
             setOpen(true);
           }}
-          completed={userTasks.find((x) => x.id === id)?.claimed}
+          completed={
+            userTasks.find((x) => x.id.toString() === id.toString())?.claimed
+          }
         >
           {renderIcon(type)}
           <TaskDetail name={name} coinReward={reward} />
