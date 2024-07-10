@@ -12,8 +12,11 @@ export default function TaskItem({
   onClick,
   completed = false,
 }: PropsWithChildren<Props>) {
+  const handleClick = () => {
+    !completed && onClick?.();
+  };
   return (
-    <div className={styles["task-item"]} onClick={onClick}>
+    <div className={styles["task-item"]} onClick={handleClick}>
       <div className={styles.content}>{children}</div>
       {completed ? <IconVerified /> : <IconArrow />}
     </div>
