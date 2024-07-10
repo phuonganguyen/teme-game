@@ -11,6 +11,7 @@ import TaskItem from "../TaskItem";
 import styles from "./TaskList.module.scss";
 import Popup from "reactjs-popup";
 import Task, { TaskType } from "@/types/task";
+import Result from "@/types/result";
 
 const IconClose = () => (
   <svg
@@ -85,6 +86,27 @@ export default function TaskList() {
     }
   };
 
+  const handleClaim = async () => {
+    if (selectedTask) {
+      const response = await fetch("/api/tasks/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          taskId: selectedTask.id,
+          reward: selectedTask.reward,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.isSuccessful) {
+        setOpen(false);
+        setSelectedTask(undefined);
+      } else {
+        alert(result.message);
+      }
+    }
+  };
+
   return (
     <>
       <div className={styles.tabs}>
@@ -116,7 +138,9 @@ export default function TaskList() {
                 <IconCoin />
                 {selectedTask.reward}
               </div>
-              <button className={styles.button}>Open</button>
+              <button className={styles.button} onClick={handleClaim}>
+                Open
+              </button>
             </>
           )}
         </div>
