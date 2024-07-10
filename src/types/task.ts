@@ -5,6 +5,11 @@ export enum TaskType {
   friend,
 }
 
+export interface TaskResponse {
+  id: number;
+  claimed: boolean;
+}
+
 export default interface Task {
   id: number;
   name: string;

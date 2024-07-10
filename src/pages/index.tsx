@@ -53,7 +53,7 @@ export default function Index({
           <Image src="/images/coins.png" width={50} height={50} alt="coins" />
           {formatNumber(coins)}
         </div>
-        <div className={styles["top-bar"]}>
+        {/* <div className={styles["top-bar"]}>
           <Link className={styles.item} href={"/shop"}>
             <Image
               src="/images/icons/shop.png"
@@ -82,7 +82,7 @@ export default function Index({
             />
             <div className={styles.text}>Boost</div>
           </Link>
-        </div>
+        </div> */}
         <div className={styles.cat}>
           <Image
             src={"/images/cats/level_1.png"}

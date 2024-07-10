@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   IconCoin,
   IconFriends,
@@ -10,7 +10,7 @@ import TaskDetail from "../TaskDetail";
 import TaskItem from "../TaskItem";
 import styles from "./TaskList.module.scss";
 import Popup from "reactjs-popup";
-import Task, { TaskType } from "@/types/task";
+import Task, { TaskResponse, TaskType } from "@/types/task";
 import Result from "@/types/result";
 
 const IconClose = () => (
@@ -68,10 +68,21 @@ export default function TaskList() {
 
   const [open, setOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
+  const [userTasks, setUserTasks] = useState<TaskResponse[]>([]);
   const closeModal = () => {
     setOpen(false);
     setSelectedTask(undefined);
   };
+
+  useEffect(() => {
+    const getTasks = async () => {
+      const response = await fetch("/api/user/tasks");
+      const data = await response.json();
+      setUserTasks(data.tasks);
+    };
+
+    getTasks();
+  }, []);
 
   const renderIcon = (type: TaskType, width = 32, height = 32) => {
     switch (type) {
@@ -121,6 +132,7 @@ export default function TaskList() {
             setSelectedTask(tasks.find((t) => t.id === id));
             setOpen(true);
           }}
+          completed={userTasks.find((x) => x.id === id)?.claimed}
         >
           {renderIcon(type)}
           <TaskDetail name={name} coinReward={reward} />
