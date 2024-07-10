@@ -103,3 +103,7 @@ export const IconFriends = ({ width = 32, height = 32 }: Props) => (
     alt=""
   />
 );
+
+export const IconCoin = ({ width = 40, height = 40 }: Props) => (
+  <Image src={"/images/coins.png"} width={width} height={height} alt="" />
+);

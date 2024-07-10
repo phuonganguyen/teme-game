@@ -1,11 +1,17 @@
 import styles from "./TaskItem.module.scss";
 import { PropsWithChildren } from "react";
-import Link, { LinkProps } from "next/link";
 import { IconArrow } from "../Icons";
 
-export default function TaskItem({ children }: PropsWithChildren<{}>) {
+type Props = {
+  onClick?: () => void;
+};
+
+export default function TaskItem({
+  children,
+  onClick,
+}: PropsWithChildren<Props>) {
   return (
-    <div className={styles["task-item"]}>
+    <div className={styles["task-item"]} onClick={onClick}>
       <div className={styles.content}>{children}</div>
       <IconArrow />
     </div>
