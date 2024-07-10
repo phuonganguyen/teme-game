@@ -1,10 +1,4 @@
-import {
-  IconCalendar,
-  IconFriends,
-  IconTelegram,
-  IconX,
-  IconYoutube,
-} from "@/components/Icons";
+import { IconCalendar, IconX } from "@/components/Icons";
 import Layout from "@/components/Layout";
 import TaskDetail from "@/components/TaskDetail";
 import TaskItem from "@/components/TaskItem";
@@ -13,7 +7,6 @@ import Title from "@/components/Title";
 
 import styles from "@/styles/Task.module.scss";
 import Image from "next/image";
-import Popup from "reactjs-popup";
 
 export default function Task() {
   return (
@@ -46,9 +39,6 @@ export default function Task() {
           </div>
           <div className={styles.tasks}>
             <TaskList />
-            <Popup trigger={<button> Trigger</button>} position="right center">
-              <div>Popup content here !!</div>
-            </Popup>
           </div>
         </div>
       </div>
