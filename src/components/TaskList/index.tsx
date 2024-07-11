@@ -93,7 +93,6 @@ export default function TaskList() {
         setSelectedTask(undefined);
       }
     } else {
-      console.log("open tooltip");
       setOpenTooltip(true);
     }
   };
@@ -232,15 +231,15 @@ export default function TaskList() {
                   {selectedTask.buttonText}
                 </button>
               )}
+              <Tooltip
+                id="my-tooltip"
+                content="Task is not complete"
+                isOpen={openTooltip}
+              />
             </>
           )}
         </div>
       </Popup>
-      <Tooltip
-        id="my-tooltip"
-        content="Task is not complete"
-        isOpen={openTooltip}
-      />
     </>
   );
 }
