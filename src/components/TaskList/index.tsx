@@ -12,6 +12,7 @@ import styles from "./TaskList.module.scss";
 import Popup from "reactjs-popup";
 import Task, { TaskResponse, TaskType } from "@/types/task";
 import Result from "@/types/result";
+import { Tooltip } from "react-tooltip";
 
 const IconClose = () => (
   <svg
@@ -30,6 +31,7 @@ const IconClose = () => (
 
 export default function TaskList() {
   const [open, setOpen] = useState(false);
+  const [openTooltip, setOpenTooltip] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
   const [userTasks, setUserTasks] = useState<TaskResponse[]>([]);
 
@@ -89,7 +91,9 @@ export default function TaskList() {
         await claimTask(taskId, reward);
         setOpen(false);
         setSelectedTask(undefined);
-      }
+      } 
+    }else {
+      setOpenTooltip(true);
     }
   };
 
@@ -182,7 +186,6 @@ export default function TaskList() {
           <TaskItem
             key={id}
             onClick={() => {
-              const task = tasks.find((t) => t.id === id);
               setSelectedTask(tasks.find((t) => t.id === id));
 
               setOpen(true);
@@ -215,6 +218,7 @@ export default function TaskList() {
                 </button>
               ) : (
                 <button
+                  data-tooltip-id="my-tooltip"
                   className={styles.button}
                   onClick={() =>
                     selectedTask.handler(
@@ -231,6 +235,11 @@ export default function TaskList() {
           )}
         </div>
       </Popup>
+      <Tooltip
+        id="my-tooltip"
+        content="Task is not complete"
+        isOpen={openTooltip}
+      />
     </>
   );
 }
