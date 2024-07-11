@@ -153,7 +153,7 @@ export default function TaskList() {
     };
 
     getTasks();
-  }, []);
+  }, [open]);
 
   const renderIcon = (type: TaskType, width = 32, height = 32) => {
     switch (type) {
