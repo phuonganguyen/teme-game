@@ -80,15 +80,15 @@ export default function TaskList() {
     }
   };
 
-  const handleCheckInviteFriends = async () => {
-    if (selectedTask) {
-      const response = await fetch("/api/friends");
-      const data = await response.json();
-      if (data?.friends && data.friends.length >= 3) {
-        const result = await createTask(selectedTask.id, selectedTask.reward);
-        if (result.isSuccessful) {
-          await claimTask(selectedTask.id, selectedTask.reward);
-        }
+  const handleCheckInviteFriends = async (taskId: number, reward: number) => {
+    const response = await fetch("/api/friends");
+    const data = await response.json();
+    if (data?.friends && data.friends.length >= 3) {
+      const result = await createTask(taskId, reward);
+      if (result.isSuccessful) {
+        await claimTask(taskId, reward);
+        setOpen(false);
+        setSelectedTask(undefined);
       }
     }
   };
@@ -217,7 +217,13 @@ export default function TaskList() {
               ) : (
                 <button
                   className={styles.button}
-                  onClick={selectedTask.handler}
+                  onClick={() =>
+                    selectedTask.handler(
+                      selectedTask.id,
+                      selectedTask.reward,
+                      selectedTask.url
+                    )
+                  }
                 >
                   {selectedTask.buttonText}
                 </button>
