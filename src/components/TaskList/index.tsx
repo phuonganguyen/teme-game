@@ -186,7 +186,10 @@ export default function TaskList() {
           <TaskItem
             key={id}
             onClick={() => {
+              const task = tasks.find((t) => t.id === id);
+              console.log(task);
               setSelectedTask(tasks.find((t) => t.id === id));
+
               setOpen(true);
             }}
             completed={userTask?.claimed}
