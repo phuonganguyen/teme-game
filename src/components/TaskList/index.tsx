@@ -183,7 +183,6 @@ export default function TaskList() {
             key={id}
             onClick={() => {
               const task = tasks.find((t) => t.id === id);
-              console.log(task);
               setSelectedTask(tasks.find((t) => t.id === id));
 
               setOpen(true);

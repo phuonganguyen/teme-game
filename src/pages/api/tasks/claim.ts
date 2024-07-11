@@ -22,7 +22,7 @@ export default async function handler(
       const tasks = await usersSnap.data().tasks;
       if (tasks && tasks.length) {
         var newTasks = tasks.map((task: any) => {
-          if (task.id.toString() === taskId) {
+          if (task.id.toString() === taskId.toString()) {
             return { ...task, claimed: true };
           }
 
@@ -33,7 +33,7 @@ export default async function handler(
           coins: increment(reward),
         });
 
-        res.status(200).json({ isSuccessful: true, newTasks });
+        res.status(200).json({ isSuccessful: true });
       }
     }
   } catch (ex) {
