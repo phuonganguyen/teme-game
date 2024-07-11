@@ -21,7 +21,7 @@ export default async function handler(
     if (usersSnap.exists()) {
       const tasks = await usersSnap.data().tasks;
       if (tasks && tasks.length) {
-        var newTasks = tasks.map((task) => {
+        var newTasks = tasks.map((task: any) => {
           if (task.id.toString() === taskId) {
             return { ...task, claimed: true };
           }
