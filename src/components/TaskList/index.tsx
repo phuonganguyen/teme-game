@@ -217,7 +217,7 @@ export default function TaskList() {
               ) : (
                 <button
                   className={styles.button}
-                  onClick={selectedTask.handler}
+                  onClick={() => selectedTask.handler()}
                 >
                   {selectedTask.buttonText}
                 </button>
