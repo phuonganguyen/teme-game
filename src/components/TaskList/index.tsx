@@ -97,6 +97,12 @@ export default function TaskList() {
     }
   };
 
+  useEffect(() => {
+    if (openTooltip) {
+      setTimeout(() => setOpenTooltip(false), 3000);
+    }
+  }, [openTooltip]);
+
   const tasks: Task[] = [
     {
       id: 1,
