@@ -71,6 +71,7 @@ export default function TaskList() {
   };
 
   const handleOpen = async () => {
+    console.log("handleOpen");
     if (selectedTask && selectedTask.url) {
       window.open(selectedTask.url, "_blank");
       const result = await createTask(selectedTask.id, selectedTask.reward);
