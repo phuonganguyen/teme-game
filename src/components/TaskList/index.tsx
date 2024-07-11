@@ -133,7 +133,7 @@ export default function TaskList() {
             setOpen(true);
           }}
           completed={
-            userTasks.find((x) => x.id.toString() === id.toString())?.claimed
+            userTasks?.find((x) => x.id.toString() === id.toString())?.claimed
           }
         >
           {renderIcon(type)}
