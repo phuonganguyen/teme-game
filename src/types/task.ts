@@ -16,6 +16,6 @@ export default interface Task {
   url?: string;
   reward: number;
   type: TaskType;
-  handler: () => void;
+  handler: (...args: any[]) => void;
   buttonText: string;
 }

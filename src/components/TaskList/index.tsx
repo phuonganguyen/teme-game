@@ -12,7 +12,6 @@ import styles from "./TaskList.module.scss";
 import Popup from "reactjs-popup";
 import Task, { TaskResponse, TaskType } from "@/types/task";
 import Result from "@/types/result";
-import { json } from "stream/consumers";
 
 const IconClose = () => (
   <svg
@@ -70,17 +69,14 @@ export default function TaskList() {
     }
   };
 
-  const handleOpen = async () => {
-    console.log(selectedTask);
-    if (selectedTask && selectedTask.url) {
-      window.open(selectedTask.url, "_blank");
-      const result = await createTask(selectedTask.id, selectedTask.reward);
-      if (result.isSuccessful) {
-        setOpen(false);
-        setSelectedTask(undefined);
-      } else {
-        alert(result.message);
-      }
+  const handleOpen = async (taskId: number, reward: number, url: string) => {
+    window.open(url, "_blank");
+    const result = await createTask(taskId, reward);
+    if (result.isSuccessful) {
+      setOpen(false);
+      setSelectedTask(undefined);
+    } else {
+      alert(result.message);
     }
   };
 
