@@ -12,6 +12,7 @@ import styles from "./TaskList.module.scss";
 import Popup from "reactjs-popup";
 import Task, { TaskResponse, TaskType } from "@/types/task";
 import Result from "@/types/result";
+import { json } from "stream/consumers";
 
 const IconClose = () => (
   <svg
@@ -33,24 +34,64 @@ export default function TaskList() {
   const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
   const [userTasks, setUserTasks] = useState<TaskResponse[]>([]);
 
+  const createTask = async (taskId: number, reward: number) => {
+    const response = await fetch("/api/tasks/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ taskId: taskId, reward: reward }),
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return await (response.json() as Promise<Result>);
+  };
+
+  const claimTask = async (taskId: number, reward: number) => {
+    const response = await fetch("/api/tasks/claim", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ taskId: taskId, reward: reward }),
+    });
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    return await (response.json() as Promise<Result>);
+  };
+
   const handleClaim = async () => {
     if (selectedTask && selectedTask.url) {
-      window.open(selectedTask.url, "_blank");
-      const response = await fetch("/api/tasks/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          taskId: selectedTask.id,
-          reward: selectedTask.reward,
-        }),
-      });
-
-      const result = await response.json();
+      var result = await claimTask(selectedTask.id, selectedTask.reward);
       if (result.isSuccessful) {
         setOpen(false);
         setSelectedTask(undefined);
       } else {
         alert(result.message);
+      }
+    }
+  };
+
+  const handleOpen = async () => {
+    if (selectedTask && selectedTask.url) {
+      window.open(selectedTask.url, "_blank");
+      const result = await createTask(selectedTask.id, selectedTask.reward);
+      if (result.isSuccessful) {
+        setOpen(false);
+        setSelectedTask(undefined);
+      } else {
+        alert(result.message);
+      }
+    }
+  };
+
+  const handleCheckInviteFriends = async () => {
+    if (selectedTask) {
+      const response = await fetch("/api/friends");
+      const data = await response.json();
+      if (data?.friends && data.friends.length >= 3) {
+        const result = await createTask(selectedTask.id, selectedTask.reward);
+        if (result.isSuccessful) {
+          await claimTask(selectedTask.id, selectedTask.reward);
+        }
       }
     }
   };
@@ -62,7 +103,7 @@ export default function TaskList() {
       url: "https://t.me/Temecoinxyz",
       type: TaskType.telegram,
       reward: 5000,
-      handler: handleClaim,
+      handler: handleOpen,
       buttonText: "Open",
     },
     {
@@ -71,7 +112,7 @@ export default function TaskList() {
       url: "https://t.me/Temecoinxyz",
       type: TaskType.telegram,
       reward: 5000,
-      handler: handleClaim,
+      handler: handleOpen,
       buttonText: "Open",
     },
     {
@@ -80,7 +121,7 @@ export default function TaskList() {
       url: "https://x.com/Temecoinxyz",
       type: TaskType.x,
       reward: 5000,
-      handler: handleClaim,
+      handler: handleOpen,
       buttonText: "Open",
     },
     {
@@ -89,7 +130,7 @@ export default function TaskList() {
       url: "https://youtube.com/@Temecoinxyz",
       type: TaskType.youtube,
       reward: 5000,
-      handler: handleClaim,
+      handler: handleOpen,
       buttonText: "Open",
     },
     {
@@ -97,7 +138,7 @@ export default function TaskList() {
       name: "Invite 3 friends",
       type: TaskType.friend,
       reward: 15000,
-      handler: handleClaim,
+      handler: handleCheckInviteFriends,
       buttonText: "Check",
     },
   ];
@@ -136,21 +177,24 @@ export default function TaskList() {
         <div className={`${styles.tab} ${styles.active}`}>Task social</div>
         <div className={styles.tab}>Upgrade earn per hour</div>
       </div>
-      {tasks.map(({ id, type, name, reward }) => (
-        <TaskItem
-          key={id}
-          onClick={() => {
-            setSelectedTask(tasks.find((t) => t.id === id));
-            setOpen(true);
-          }}
-          completed={
-            userTasks?.find((x) => x.id.toString() === id.toString())?.claimed
-          }
-        >
-          {renderIcon(type)}
-          <TaskDetail name={name} coinReward={reward} />
-        </TaskItem>
-      ))}
+      {tasks.map(({ id, type, name, reward }) => {
+        const userTask = userTasks?.find(
+          (x) => x.id.toString() === id.toString()
+        );
+        return (
+          <TaskItem
+            key={id}
+            onClick={() => {
+              setSelectedTask(tasks.find((t) => t.id === id));
+              setOpen(true);
+            }}
+            completed={userTask?.claimed}
+          >
+            {renderIcon(type)}
+            <TaskDetail name={name} coinReward={reward} />
+          </TaskItem>
+        );
+      })}
       <Popup open={open} onClose={closeModal}>
         <div className={styles.modal}>
           <a className={styles.close} onClick={closeModal}>
@@ -164,6 +208,23 @@ export default function TaskList() {
                 <IconCoin />
                 {selectedTask.reward}
               </div>
+              {userTasks?.find(
+                (x) => x.id.toString() === selectedTask.id.toString()
+              )?.claimed == false ? (
+                <button
+                  className={styles.button}
+                  onClick={handleClaim}
+                >
+                  Claim
+                </button>
+              ) : (
+                <button
+                  className={styles.button}
+                  onClick={selectedTask.handler}
+                >
+                  {selectedTask.buttonText}
+                </button>
+              )}
               <button className={styles.button} onClick={selectedTask.handler}>
                 {selectedTask.buttonText}
               </button>

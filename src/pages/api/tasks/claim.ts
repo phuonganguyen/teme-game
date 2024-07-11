@@ -1,13 +1,7 @@
 import db from "@/libs/firestore";
 import { sessionOptions } from "@/libs/session";
 import Result from "@/types/result";
-import {
-  arrayUnion,
-  doc,
-  getDoc,
-  increment,
-  updateDoc,
-} from "@firebase/firestore";
+import { doc, getDoc, increment, updateDoc } from "@firebase/firestore";
 import { getIronSession, IronSessionData } from "iron-session";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -25,14 +19,21 @@ export default async function handler(
     const usersRef = doc(db, "users", `${session.tgChatId}`);
     const usersSnap = await getDoc(usersRef);
     if (usersSnap.exists()) {
-      await updateDoc(usersRef, {
-        tasks: arrayUnion({
-          id: `${taskId}`,
-          reward: reward,
-          time: Date.now(),
-          claimed: false,
-        }),
-      });
+      const tasks = await usersSnap.data().tasks;
+      if (tasks && tasks.length) {
+        var newTasks = tasks.map((task) => {
+          if (task.id.toString() === taskId) {
+            return { ...task, claimed: true };
+          }
+
+          return task;
+        });
+        await updateDoc(usersRef, {
+          tasks: newTasks,
+          coins: increment(reward),
+        });
+      }
+
       res.status(200).json({ isSuccessful: true });
     }
   } catch (ex) {
