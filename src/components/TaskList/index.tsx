@@ -211,10 +211,7 @@ export default function TaskList() {
               {userTasks?.find(
                 (x) => x.id.toString() === selectedTask.id.toString()
               )?.claimed == false ? (
-                <button
-                  className={styles.button}
-                  onClick={handleClaim}
-                >
+                <button className={styles.button} onClick={handleClaim}>
                   Claim
                 </button>
               ) : (
@@ -225,9 +222,6 @@ export default function TaskList() {
                   {selectedTask.buttonText}
                 </button>
               )}
-              <button className={styles.button} onClick={selectedTask.handler}>
-                {selectedTask.buttonText}
-              </button>
             </>
           )}
         </div>
