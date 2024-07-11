@@ -91,8 +91,9 @@ export default function TaskList() {
         await claimTask(taskId, reward);
         setOpen(false);
         setSelectedTask(undefined);
-      } 
-    }else {
+      }
+    } else {
+      console.log("open tooltip");
       setOpenTooltip(true);
     }
   };
