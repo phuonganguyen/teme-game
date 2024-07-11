@@ -29,6 +29,32 @@ const IconClose = () => (
 );
 
 export default function TaskList() {
+  const [open, setOpen] = useState(false);
+  const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
+  const [userTasks, setUserTasks] = useState<TaskResponse[]>([]);
+
+  const handleClaim = async () => {
+    if (selectedTask && selectedTask.url) {
+      window.open(selectedTask.url, "_blank");
+      const response = await fetch("/api/tasks/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          taskId: selectedTask.id,
+          reward: selectedTask.reward,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.isSuccessful) {
+        setOpen(false);
+        setSelectedTask(undefined);
+      } else {
+        alert(result.message);
+      }
+    }
+  };
+
   const tasks: Task[] = [
     {
       id: 1,
@@ -36,6 +62,8 @@ export default function TaskList() {
       url: "https://t.me/Temecoinxyz",
       type: TaskType.telegram,
       reward: 5000,
+      handler: handleClaim,
+      buttonText: "Open",
     },
     {
       id: 2,
@@ -43,6 +71,8 @@ export default function TaskList() {
       url: "https://t.me/Temecoinxyz",
       type: TaskType.telegram,
       reward: 5000,
+      handler: handleClaim,
+      buttonText: "Open",
     },
     {
       id: 3,
@@ -50,6 +80,8 @@ export default function TaskList() {
       url: "https://x.com/Temecoinxyz",
       type: TaskType.x,
       reward: 5000,
+      handler: handleClaim,
+      buttonText: "Open",
     },
     {
       id: 4,
@@ -57,18 +89,19 @@ export default function TaskList() {
       url: "https://youtube.com/@Temecoinxyz",
       type: TaskType.youtube,
       reward: 5000,
+      handler: handleClaim,
+      buttonText: "Open",
     },
     {
       id: 5,
       name: "Invite 3 friends",
       type: TaskType.friend,
       reward: 15000,
+      handler: handleClaim,
+      buttonText: "Check",
     },
   ];
 
-  const [open, setOpen] = useState(false);
-  const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
-  const [userTasks, setUserTasks] = useState<TaskResponse[]>([]);
   const closeModal = () => {
     setOpen(false);
     setSelectedTask(undefined);
@@ -94,28 +127,6 @@ export default function TaskList() {
         return <IconYoutube {...{ width, height }} />;
       case TaskType.friend:
         return <IconFriends {...{ width, height }} />;
-    }
-  };
-
-  const handleClaim = async () => {
-    if (selectedTask && selectedTask.url) {
-      window.open(selectedTask.url, "_blank");
-      const response = await fetch("/api/tasks/create", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          taskId: selectedTask.id,
-          reward: selectedTask.reward,
-        }),
-      });
-
-      const result = await response.json();
-      if (result.isSuccessful) {
-        setOpen(false);
-        setSelectedTask(undefined);
-      } else {
-        alert(result.message);
-      }
     }
   };
 
@@ -153,8 +164,8 @@ export default function TaskList() {
                 <IconCoin />
                 {selectedTask.reward}
               </div>
-              <button className={styles.button} onClick={handleClaim}>
-                Open
+              <button className={styles.button} onClick={selectedTask.handler}>
+                {selectedTask.buttonText}
               </button>
             </>
           )}
