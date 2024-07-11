@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Result>
+  res: NextApiResponse<any>
 ) {
   try {
     const { taskId, reward } = req.body;
@@ -32,9 +32,9 @@ export default async function handler(
           tasks: newTasks,
           coins: increment(reward),
         });
-      }
 
-      res.status(200).json({ isSuccessful: true });
+        res.status(200).json({ isSuccessful: true, newTasks });
+      }
     }
   } catch (ex) {
     res.status(200).json({ isSuccessful: false, message: JSON.stringify(ex) });
