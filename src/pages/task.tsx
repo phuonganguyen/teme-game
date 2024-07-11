@@ -24,15 +24,15 @@ export default function Task() {
         <div className={styles.content}>
           <div className={styles.tasks}>
             <div className={styles.title}>Daily tasks</div>
-            <TaskItem>
+            <TaskItem disabled>
               <IconCalendar />
               <TaskDetail name="Checkin daily" coinReward={5000} />
             </TaskItem>
-            <TaskItem>
+            <TaskItem disabled>
               <IconX />
               <TaskDetail name="Retweet post" coinReward={5000} />
             </TaskItem>
-            <TaskItem>
+            <TaskItem disabled>
               <IconX />
               <TaskDetail name="Comment post" coinReward={5000} />
             </TaskItem>
