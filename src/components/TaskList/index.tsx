@@ -71,7 +71,7 @@ export default function TaskList() {
   };
 
   const handleOpen = async () => {
-    console.log("handleOpen");
+    console.log(selectedTask);
     if (selectedTask && selectedTask.url) {
       window.open(selectedTask.url, "_blank");
       const result = await createTask(selectedTask.id, selectedTask.reward);
@@ -218,7 +218,7 @@ export default function TaskList() {
               ) : (
                 <button
                   className={styles.button}
-                  onClick={() => selectedTask.handler()}
+                  onClick={selectedTask.handler}
                 >
                   {selectedTask.buttonText}
                 </button>
