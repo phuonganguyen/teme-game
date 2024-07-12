@@ -105,7 +105,7 @@ export const IconFriends = ({ width = 32, height = 32 }: Props) => (
 );
 
 export const IconCoin = ({ width = 40, height = 40 }: Props) => (
-  <Image src={"/images/coins.png"} width={width} height={height} alt="" />
+  <Image src={"/images/icons/Coin.png"} width={width} height={height} alt="" />
 );
 
 export const IconVerified = ({ width = 20, height = 20 }: Props) => (

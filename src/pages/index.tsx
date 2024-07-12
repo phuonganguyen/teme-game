@@ -6,9 +6,7 @@ import Image from "@/components/Image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { IconLevel1 } from "@/components/Icons/Levels";
-import { IconArrowUp } from "@/components/Icons";
+import { IconCoin } from "@/components/Icons";
 
 export default function Index({
   session,
@@ -50,7 +48,7 @@ export default function Index({
           </button>
         </div>
         <div className={styles.coin}>
-          <Image src="/images/coins.png" width={50} height={50} alt="coins" />
+          <IconCoin width={50} height={50} />
           {formatNumber(coins)}
         </div>
         {/* <div className={styles["top-bar"]}>

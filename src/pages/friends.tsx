@@ -1,4 +1,4 @@
-import { IconCopy } from "@/components/Icons";
+import { IconCoin, IconCopy } from "@/components/Icons";
 import Layout from "@/components/Layout";
 import Title from "@/components/Title";
 import { sessionOptions } from "@/libs/session";
@@ -57,7 +57,7 @@ export default function Friends({
             <div>{username}</div>
           </div>
           <div className={styles.right}>
-            <Image src={"/images/coins.png"} width={25} height={25} alt="c" />
+            <IconCoin width={25} height={25} />
             <div>{`+ ${formatNumber(coins)}`}</div>
           </div>
         </div>
@@ -86,12 +86,7 @@ export default function Friends({
               <div className={styles.content}>
                 <div className={styles.title}>Invite a friend</div>
                 <div className={styles.sub}>
-                  <Image
-                    src="/images/coins.png"
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
+                  <IconCoin width={20} height={20} />
                   <div>
                     <span className={styles.number}>+5,000</span> for you and{" "}
                     <span className={styles.number}>+2,500</span> for your
@@ -112,12 +107,7 @@ export default function Friends({
                   Invite a friend with Telegram Premium
                 </div>
                 <div className={styles.sub}>
-                  <Image
-                    src="/images/coins.png"
-                    width={20}
-                    height={20}
-                    alt=""
-                  />
+                  <IconCoin width={20} height={20} />
                   <div>
                     <span className={styles.number}>+25,000</span> for you and{" "}
                     <span className={styles.number}>+10,000</span> for your
