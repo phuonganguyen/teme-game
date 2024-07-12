@@ -91,7 +91,7 @@ export default function Index({
         </div>
         <div className={styles.claim}>
           <div className={styles.rectangle}></div>
-          Claim 5
+          <div className={styles.text}>Claim 5</div>
         </div>
       </div>
     </Layout>
