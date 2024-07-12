@@ -89,7 +89,10 @@ export default function Index({
             alt="cat"
           />
         </div>
-        <div className={styles["coming-soon"]}>Coming Soon!</div>
+        <div className={styles.claim}>
+          <div className={styles.rectangle}></div>
+          Claim 5
+        </div>
       </div>
     </Layout>
   );

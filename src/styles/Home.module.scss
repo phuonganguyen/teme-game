@@ -169,4 +169,29 @@
     font-weight: 700;
     line-height: normal;
   }
+
+  .claim {
+    height: 36px;
+    align-self: stretch;
+
+    border-radius: 8px;
+    border: 2px solid rgba(89, 210, 249, 0.5);
+    background: var(--Background, #003b51);
+
+    color: var(--White, #fff);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    .rectangle {
+      width: 113.252px;
+      height: 36px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #00bfff 0%, #00598a 100%);
+    }
+  }
 }
