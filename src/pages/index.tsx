@@ -90,7 +90,15 @@ export default function Index({
           />
         </div>
         <div className={styles.claim}>
-          <div className={styles.rectangle}></div>
+          <div className={styles.rectangle}>
+            <div className={styles.info}>
+              Total earn per hour
+              <div className={styles.coin}>
+                <IconCoin width={15.4} height={15.4} />
+                <span>+ 50</span>
+              </div>
+            </div>
+          </div>
           <div className={styles.text}>Claim 5</div>
         </div>
       </div>
