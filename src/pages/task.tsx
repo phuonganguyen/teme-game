@@ -6,7 +6,7 @@ import TaskList from "@/components/TaskList";
 import Title from "@/components/Title";
 
 import styles from "@/styles/Task.module.scss";
-import Image from "next/image";
+import Image from "@/components/Image";
 
 export default function Task() {
   return (

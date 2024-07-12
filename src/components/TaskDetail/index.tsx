@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/Image";
 import styles from "./TaskDetail.module.scss";
 import { formatNumber } from "@/utils";
 type Props = {

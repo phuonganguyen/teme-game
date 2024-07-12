@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/Image";
 
 import styles from "./Menu.module.scss";
 import Link, { LinkProps } from "next/link";

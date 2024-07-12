@@ -7,7 +7,7 @@ import Friend from "@/types/friend";
 import { formatNumber } from "@/utils";
 import { IronSessionData, getIronSession } from "iron-session";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { useEffect, useState } from "react";
 import { Tooltip } from "react-tooltip";
 

@@ -1,5 +1,5 @@
 import styles from "@/styles/UnSupport.module.scss";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { useEffect, useState } from "react";
 
 export default function UnSupport() {

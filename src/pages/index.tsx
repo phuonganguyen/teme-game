@@ -2,7 +2,7 @@ import { sessionOptions } from "@/libs/session";
 import { IronSessionData, getIronSession } from "iron-session";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 import styles from "@/styles/Home.module.scss";
-import Image from "next/image";
+import Image from "@/components/Image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
 import { useEffect, useState } from "react";

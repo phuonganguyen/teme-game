@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import styles from "@/styles/Login.module.scss";
-import Image from "next/image";
+import Image from "@/components/Image";
 import { useRouter } from "next/router";
 import { IconTelegram, IconWeb, IconX, IconYoutube } from "@/components/Icons";
 
