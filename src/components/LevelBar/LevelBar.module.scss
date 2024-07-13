@@ -48,7 +48,7 @@
 
       /* Firefox */
       &::-moz-progress-bar {
-        background-color: pink;
+        background-color: linear-gradient(to right, #00c2ff, #39fb6f, #00c136),
         border-top-left-radius: 100px;
         border-bottom-left-radius: 100px;
       }
