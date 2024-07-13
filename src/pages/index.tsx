@@ -6,9 +6,9 @@ import Image from "@/components/Image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
 import { useEffect, useState } from "react";
-import { IconArrowUp, IconCoin } from "@/components/Icons";
+import { IconCoin } from "@/components/Icons";
 import Link from "next/link";
-import { IconLevel1 } from "@/components/Icons/Levels";
+import LevelBar from "@/components/LevelBar";
 
 export default function Index({
   session,
@@ -63,16 +63,7 @@ export default function Index({
             />
             <div className={styles.text}>Shop</div>
           </Link>
-          <div className={styles.level}>
-            <IconLevel1 />
-            <div className={styles.process}>
-              <div className={styles.text}>0 / 10K</div>
-            </div>
-            <button className={styles["btn-up"]}>
-              <IconArrowUp />
-              Up
-            </button>
-          </div>
+          <LevelBar level={session.level} currenCoin={coins} />
           <Link className={styles.item} href={"#"}>
             <Image
               src="/images/icons/rocket.png"
