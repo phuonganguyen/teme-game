@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  padding: 0px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  color: var(--Text-gray, #cfcfcf);
+  font-family: Poppins;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  .energy {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    color: var(--White, #fff);
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}
