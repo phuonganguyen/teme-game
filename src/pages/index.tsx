@@ -6,7 +6,9 @@ import Image from "@/components/Image";
 import Layout from "@/components/Layout";
 import { formatNumber } from "@/utils";
 import { useEffect, useState } from "react";
-import { IconCoin } from "@/components/Icons";
+import { IconArrowUp, IconCoin } from "@/components/Icons";
+import Link from "next/link";
+import { IconLevel1 } from "@/components/Icons/Levels";
 
 export default function Index({
   session,
@@ -51,7 +53,7 @@ export default function Index({
           <IconCoin width={50} height={50} />
           {formatNumber(coins)}
         </div>
-        {/* <div className={styles["top-bar"]}>
+        <div className={styles["top-bar"]}>
           <Link className={styles.item} href={"/shop"}>
             <Image
               src="/images/icons/shop.png"
@@ -80,7 +82,7 @@ export default function Index({
             />
             <div className={styles.text}>Boost</div>
           </Link>
-        </div> */}
+        </div>
         <div className={styles.cat}>
           <Image
             src={"/images/cats/level_1.png"}
