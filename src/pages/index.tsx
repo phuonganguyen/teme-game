@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { IconCoin } from "@/components/Icons";
 import Link from "next/link";
 import LevelBar from "@/components/LevelBar";
+import Energy from "@/components/Energy";
 
 export default function Index({
   session,
@@ -81,6 +82,7 @@ export default function Index({
             height={225}
             alt="cat"
           />
+          <Energy />
         </div>
         <div className={styles.claim}>
           <div className={styles.rectangle}>
