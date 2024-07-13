@@ -68,9 +68,9 @@ export default function Index({
           <Link className={styles.item} href={"#"}>
             <Image
               src="/images/icons/rocket.png"
-              width={26}
-              height={26}
-              alt="shop"
+              width={32}
+              height={24}
+              alt="boost"
             />
             <div className={styles.text}>Boost</div>
           </Link>
