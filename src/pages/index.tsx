@@ -103,7 +103,6 @@ export default function Index({
           </div>
           <div className={styles.text}>Claim 5</div>
         </div>
-        <div className={styles["coming-soon"]}>Coming Soon!</div>
       </div>
     </Layout>
   );
