@@ -9,16 +9,27 @@ const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true);
-    const { path } = parsedUrl;
-    if (path === "/health") {
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "text/plain");
-      res.end("Healthy!");
-    } else {
-      handle(req, res, parsedUrl);
+    try {
+      const parsedUrl = parse(req.url!, true);
+      const { pathname } = parsedUrl;
+      if (pathname === "/health") {
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "text/plain");
+        res.end("Healthy!");
+      } else {
+        handle(req, res, parsedUrl);
+      }
+    } catch (err) {
+      console.error("Error occurred handling", req.url, err);
+      res.statusCode = 500;
+      res.end("internal server error");
     }
-  }).listen(port);
+  })
+    .once("error", (err) => {
+      console.error(err);
+      process.exit(1);
+    })
+    .listen(port);
 
   console.log(
     `> Server listening at http://localhost:${port} as ${
