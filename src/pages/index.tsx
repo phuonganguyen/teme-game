@@ -43,7 +43,9 @@ export default function Index({
                   alt=""
                 />
               </div>
-              {session.username}
+              {session.username.length > 10
+                ? `${session.username.substring(0, 9)}...`
+                : session.username}
             </div>
           </div>
           <button className={styles["btn-exchange"]}>
