@@ -82,7 +82,7 @@ export default function Index({
             height={225}
             alt="cat"
           />
-          <Energy />
+          <Energy level={session.level} />
         </div>
         <div className={styles.claim}>
           <div className={styles.rectangle}>

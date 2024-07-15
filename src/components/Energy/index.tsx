@@ -1,7 +1,11 @@
 import Image from "../Image";
 import styles from "./Energy.module.scss";
 
-export default function Energy() {
+type Props = {
+  level: number;
+};
+
+export default function Energy({ level }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.energy}>
