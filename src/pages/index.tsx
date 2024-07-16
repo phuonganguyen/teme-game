@@ -41,9 +41,7 @@ export default function Index({
   }, [session.tgChatId]);
 
   const handleCatClick = () => {
-    if ("vibrate" in navigator) {
-      navigator.vibrate([300, 100, 300]);
-    }
+    window.Telegram.WebApp.HapticFeedback.selectionChanged();
   };
 
   return (
