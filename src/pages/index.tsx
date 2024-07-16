@@ -19,29 +19,35 @@ export default function Index({
   const [energy, setEnergy] = useState(0);
   const [resetTime, setResetTime] = useState<Date>(undefined);
 
+  const getCoins = async () => {
+    const response = await fetch("/api/coins");
+    const data = await response.json();
+    setCoins(data.coins);
+  };
+
+  const getEnergy = async () => {
+    const response = await fetch("/api/user/energy");
+    const data = await response.json();
+    setEnergy(data.energy);
+    setResetTime(data.time);
+    console.log(data);
+  };
+
   useEffect(() => {
-    const getCoins = async () => {
-      const response = await fetch("/api/coins");
-      const data = await response.json();
-      setCoins(data.coins);
-    };
-
-    const getEnergy = async () => {
-      const response = await fetch("/api/user/energy");
-      const data = await response.json();
-      setEnergy(data.energy);
-      setResetTime(data.time);
-      console.log(data);
-    };
-
     if (session.tgChatId) {
       getCoins();
       getEnergy();
     }
   }, [session.tgChatId]);
 
-  const handleCatClick = () => {
+  const handleCatClick = async () => {
     window.Telegram.WebApp.HapticFeedback.selectionChanged();
+    const response = await fetch("/api/user/tap", { method: "POST" });
+    const result = await response.json();
+    if (result.isSuccess) {
+      await getCoins();
+      await getEnergy();
+    }
   };
 
   return (
