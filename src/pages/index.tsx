@@ -35,6 +35,7 @@ export default function Index({
 
     if (session.tgChatId) {
       getCoins();
+      getEnergy();
     }
   }, [session.tgChatId]);
 
