@@ -31,6 +31,7 @@ export default function Index({
       const data = await response.json();
       setEnergy(data.energy);
       setResetTime(data.time);
+      console.log(data);
     };
 
     if (session.tgChatId) {
