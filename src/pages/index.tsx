@@ -1,26 +1,36 @@
-import { sessionOptions } from "@/libs/session";
-import { IronSessionData, getIronSession } from "iron-session";
-import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
-import styles from "@/styles/Home.module.scss";
-import Image from "@/components/Image";
-import Layout from "@/components/Layout";
-import { formatNumber } from "@/utils";
-import { useEffect, useState } from "react";
-import { IconCoin } from "@/components/Icons";
-import Link from "next/link";
-import LevelBar from "@/components/LevelBar";
-import Energy from "@/components/Energy";
+import { getIronSession, IronSessionData } from 'iron-session';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
+import Energy from '@/components/Energy';
+import { IconCoin } from '@/components/Icons';
+import Image from '@/components/Image';
+import Layout from '@/components/Layout';
+import LevelBar from '@/components/LevelBar';
+import { sessionOptions } from '@/libs/session';
+import styles from '@/styles/Home.module.scss';
+import { formatNumber } from '@/utils';
+
+import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 export default function Index({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [coins, setCoins] = useState(0);
+  const [energy, setEnergy] = useState(0);
+  const [resetTime, setResetTime] = useState<Date>(undefined);
 
   useEffect(() => {
     const getCoins = async () => {
       const response = await fetch("/api/coins");
       const data = await response.json();
       setCoins(data.coins);
+    };
+
+    const getEnergy = async () => {
+      const response = await fetch("/api/user/energy");
+      const data = await response.json();
+      setEnergy(data.energy);
+      setResetTime(data.time);
     };
 
     if (session.tgChatId) {
@@ -84,7 +94,7 @@ export default function Index({
             height={225}
             alt="cat"
           />
-          <Energy level={session.level} />
+          <Energy level={session.level} energy={energy} resetTime={resetTime} />
         </div>
         <div className={styles.claim}>
           <div className={styles.rectangle}>
