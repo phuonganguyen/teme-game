@@ -24,7 +24,7 @@ export default async function handler(
   const energyDoc = await getDoc(energyDocRef);
   if (energyDoc.exists()) {
     const energy = energyDoc.data();
-    res.status(200).json({ energy: energy.energy, time: energy.time });
+    res.status(200).json({ energy: energy.energy, time: energy.time.toDate() });
   } else {
     res.status(200).json({ energy: 0, time: undefined });
   }
