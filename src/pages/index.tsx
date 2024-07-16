@@ -40,6 +40,12 @@ export default function Index({
     }
   }, [session.tgChatId]);
 
+  const handleCatClick = () => {
+    if ("vibrate" in navigator) {
+      navigator.vibrate([300, 100, 300]);
+    }
+  };
+
   return (
     <Layout>
       <div className={styles.mining}>
@@ -89,7 +95,7 @@ export default function Index({
             <div className={styles.text}>Boost</div>
           </Link>
         </div>
-        <div className={styles.cat}>
+        <div className={styles.cat} onClick={handleCatClick}>
           <Image
             src={"/images/cats/level_1.png"}
             width={225}
