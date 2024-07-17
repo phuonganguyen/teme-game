@@ -1,5 +1,5 @@
-import Image from '../Image';
-import styles from './Energy.module.scss';
+import Image from "../Image";
+import styles from "./Energy.module.scss";
 
 type Props = {
   level: number;
@@ -27,7 +27,6 @@ const energyByLevel: { [level: number]: number } = {
 
 export default function Energy({ level, energy, resetTime }: Props) {
   const maxEnergy = energyByLevel[level];
-  console.log(resetTime);
 
   return (
     <div className={styles.container}>

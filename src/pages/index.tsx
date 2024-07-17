@@ -1,15 +1,17 @@
-import { getIronSession, IronSessionData } from 'iron-session';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { getIronSession, IronSessionData } from "iron-session";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-import Energy from '@/components/Energy';
-import { IconCoin } from '@/components/Icons';
-import Image from '@/components/Image';
-import Layout from '@/components/Layout';
-import LevelBar from '@/components/LevelBar';
-import { sessionOptions } from '@/libs/session';
-import styles from '@/styles/Home.module.scss';
-import { formatNumber } from '@/utils';
+import Energy from "@/components/Energy";
+import { IconCoin } from "@/components/Icons";
+import Image from "@/components/Image";
+import Layout from "@/components/Layout";
+import LevelBar from "@/components/LevelBar";
+import Profits from "@/components/Profits";
+import { earnPerTap } from "@/constants";
+import { sessionOptions } from "@/libs/session";
+import styles from "@/styles/Home.module.scss";
+import { formatNumber } from "@/utils";
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 export default function Index({
@@ -18,6 +20,7 @@ export default function Index({
   const [coins, setCoins] = useState(0);
   const [energy, setEnergy] = useState(0);
   const [resetTime, setResetTime] = useState<Date>(undefined);
+  const [clickQueue, setClickQueue] = useState<{ [key: number]: number }>({});
 
   const getCoins = async () => {
     const response = await fetch("/api/coins");
@@ -30,7 +33,6 @@ export default function Index({
     const data = await response.json();
     setEnergy(data.energy);
     setResetTime(data.time);
-    console.log(data);
   };
 
   useEffect(() => {
@@ -40,6 +42,23 @@ export default function Index({
     }
   }, [session.tgChatId]);
 
+  const addClickQueue = () => {
+    const key = new Date().getTime();
+    var queue = clickQueue;
+    queue[key] = earnPerTap[session.level];
+    setClickQueue(queue);
+
+    setTimeout(() => {
+      removeClickQueue(key);
+    }, 2000);
+  };
+
+  const removeClickQueue = (key: number) => {
+    const queue = clickQueue;
+    delete queue[key];
+    setClickQueue(queue);
+  };
+
   const handleCatClick = async () => {
     window.Telegram.WebApp.HapticFeedback.selectionChanged();
     const response = await fetch("/api/user/tap", { method: "POST" });
@@ -47,6 +66,7 @@ export default function Index({
     if (result.isSuccess) {
       await getCoins();
       await getEnergy();
+      addClickQueue();
     }
   };
 
@@ -106,6 +126,9 @@ export default function Index({
             height={225}
             alt="cat"
           />
+          {Object.entries(clickQueue).map(([key, value]) => (
+            <Profits key={key} value={value} />
+          ))}
           <Energy level={session.level} energy={energy} resetTime={resetTime} />
         </div>
         <div className={styles.claim}>
