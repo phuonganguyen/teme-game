@@ -1,6 +1,7 @@
+import { randomUUID } from "crypto";
 import { getIronSession, IronSessionData } from "iron-session";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 import Energy from "@/components/Energy";
 import { IconCoin } from "@/components/Icons";
@@ -20,7 +21,7 @@ export default function Index({
   const [coins, setCoins] = useState(0);
   const [energy, setEnergy] = useState(0);
   const [resetTime, setResetTime] = useState<Date>(undefined);
-  const [clickQueue, setClickQueue] = useState<{ [key: number]: number }>({});
+  const [clickQueue, setClickQueue] = useState<{ [key: string]: number }>({});
 
   const getCoins = async () => {
     const response = await fetch("/api/coins");
@@ -43,7 +44,7 @@ export default function Index({
   }, [session.tgChatId]);
 
   const addClickQueue = () => {
-    const key = new Date().getTime();
+    const key = randomUUID();
     var queue = clickQueue;
     queue[key] = earnPerTap[session.level];
     setClickQueue(queue);
@@ -53,7 +54,7 @@ export default function Index({
     }, 2000);
   };
 
-  const removeClickQueue = (key: number) => {
+  const removeClickQueue = (key: string) => {
     const queue = clickQueue;
     delete queue[key];
     setClickQueue(queue);
