@@ -1,7 +1,7 @@
-import { randomUUID } from "crypto";
 import { getIronSession, IronSessionData } from "iron-session";
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
 import Energy from "@/components/Energy";
 import { IconCoin } from "@/components/Icons";
@@ -44,7 +44,7 @@ export default function Index({
   }, [session.tgChatId]);
 
   const addClickQueue = () => {
-    const key = randomUUID();
+    const key = uuidv4();
     var queue = clickQueue;
     queue[key] = earnPerTap[session.level];
     setClickQueue(queue);
