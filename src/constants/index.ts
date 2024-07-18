@@ -27,3 +27,15 @@ export const titleNameMapper: { [key: number]: string } = {
   8: "Multiverse",
   9: "Extradimensional",
 };
+
+export const rewardPerHour: { [level: number]: number } = {
+  1: 50,
+  2: 150,
+  3: 400,
+  4: 800,
+  5: 1600,
+  6: 3500,
+  7: 10000,
+  8: 16000,
+  9: 30000,
+};

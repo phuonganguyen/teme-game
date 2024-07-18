@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 50px;
+
+  .title {
+    color: var(--White, #fff);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+    .sub-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      color: var(--White, #fff);
+      font-family: Poppins;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      .coin {
+        color: var(--Yellow, #fff175);
+        font-family: Poppins;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        display: flex;
+      }
+    }
+  }
+
+  .cat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .upgrade {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 60px;
+  }
+
+  .progress-bar {
+    appearance: none;
+    height: 24px;
+    border-radius: 100px;
+
+    /* Chrome and Safari */
+    &::-webkit-progress-bar {
+      background: #003b51;
+      border-radius: 100px;
+    }
+
+    &::-webkit-progress-value {
+      background: linear-gradient(to right, #00c2ff, #39fb6f, #00c136);
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
+
+    /* Firefox */
+    &::-moz-progress-bar {
+      background: linear-gradient(to right, #00c2ff, #39fb6f, #00c136);
+      border-top-left-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
+
+    &::-webkit-progress-value {
+      transition: width 1s;
+    }
+  }
+}

@@ -1,11 +1,8 @@
 import Image from "@/components/Image";
 
-type Props = {
-  width?: number;
-  height?: number;
-};
+import { IconProps } from "./type";
 
-export const IconCopy = ({ width = 16, height = 16 }: Props) => (
+export const IconCopy = ({ width = 16, height = 16 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -20,7 +17,7 @@ export const IconCopy = ({ width = 16, height = 16 }: Props) => (
   </svg>
 );
 
-export const IconArrow = ({ width = 16, height = 16 }: Props) => (
+export const IconArrow = ({ width = 16, height = 16 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -35,7 +32,7 @@ export const IconArrow = ({ width = 16, height = 16 }: Props) => (
   </svg>
 );
 
-export const IconArrowUp = ({ width = 16, height = 16 }: Props) => (
+export const IconArrowUp = ({ width = 16, height = 16 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}
@@ -50,7 +47,7 @@ export const IconArrowUp = ({ width = 16, height = 16 }: Props) => (
   </svg>
 );
 
-export const IconCalendar = ({ width = 32, height = 32 }: Props) => (
+export const IconCalendar = ({ width = 32, height = 32 }: IconProps) => (
   <Image
     src={"/images/icons/calendar.png"}
     width={width}
@@ -59,7 +56,7 @@ export const IconCalendar = ({ width = 32, height = 32 }: Props) => (
   />
 );
 
-export const IconTelegram = ({ width = 32, height = 32 }: Props) => (
+export const IconTelegram = ({ width = 32, height = 32 }: IconProps) => (
   <Image
     src={"/images/icons/Icon_TELE.png"}
     width={width}
@@ -68,7 +65,7 @@ export const IconTelegram = ({ width = 32, height = 32 }: Props) => (
   />
 );
 
-export const IconWeb = ({ width = 32, height = 32 }: Props) => (
+export const IconWeb = ({ width = 32, height = 32 }: IconProps) => (
   <Image
     src={"/images/icons/Icon_web.png"}
     width={width}
@@ -77,7 +74,7 @@ export const IconWeb = ({ width = 32, height = 32 }: Props) => (
   />
 );
 
-export const IconX = ({ width = 32, height = 32 }: Props) => (
+export const IconX = ({ width = 32, height = 32 }: IconProps) => (
   <Image
     src={"/images/icons/Icon_X.png"}
     width={width}
@@ -86,7 +83,7 @@ export const IconX = ({ width = 32, height = 32 }: Props) => (
   />
 );
 
-export const IconYoutube = ({ width = 32, height = 32 }: Props) => (
+export const IconYoutube = ({ width = 32, height = 32 }: IconProps) => (
   <Image
     src={"/images/icons/Icon_Youtube.png"}
     width={width}
@@ -95,7 +92,7 @@ export const IconYoutube = ({ width = 32, height = 32 }: Props) => (
   />
 );
 
-export const IconFriends = ({ width = 32, height = 32 }: Props) => (
+export const IconFriends = ({ width = 32, height = 32 }: IconProps) => (
   <Image
     src={"/images/icons/friend.png"}
     width={width}
@@ -104,11 +101,11 @@ export const IconFriends = ({ width = 32, height = 32 }: Props) => (
   />
 );
 
-export const IconCoin = ({ width = 40, height = 40 }: Props) => (
+export const IconCoin = ({ width = 40, height = 40 }: IconProps) => (
   <Image src={"/images/icons/Coin.png"} width={width} height={height} alt="" />
 );
 
-export const IconVerified = ({ width = 20, height = 20 }: Props) => (
+export const IconVerified = ({ width = 20, height = 20 }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

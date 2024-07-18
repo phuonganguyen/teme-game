@@ -1,9 +1,11 @@
-export const IconLevel1 = () => {
+import { IconProps } from "./type";
+
+export const IconLevel1 = ({ width = 33, height = 32 }: IconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="33"
-      height="32"
+      width={width}
+      height={height}
       viewBox="0 0 33 32"
       fill="none"
     >
@@ -24,9 +26,9 @@ export const IconLevel1 = () => {
           y2="30.7997"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#AED5FF" />
-          <stop offset="0.07" stop-color="#4BA2FF" />
-          <stop offset="1" stop-color="#2145BB" />
+          <stop stopColor="#AED5FF" />
+          <stop offset="0.07" stopColor="#4BA2FF" />
+          <stop offset="1" stopColor="#2145BB" />
         </linearGradient>
       </defs>
     </svg>

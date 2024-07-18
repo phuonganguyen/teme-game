@@ -166,6 +166,4 @@ export const getServerSideProps = (async (context) => {
   }
 
   return { props: { session } };
-}) satisfies GetServerSideProps<{
-  session: IronSessionData;
-}>;
+}) satisfies GetServerSideProps<{ session: IronSessionData }>;
