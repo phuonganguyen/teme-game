@@ -15,3 +15,15 @@ export const earnPerTap: { [level: number]: number } = {
   14: 29,
   15: 35,
 };
+
+export const titleNameMapper: { [key: number]: string } = {
+  1: "Newbie",
+  2: "Urban",
+  3: "Nuclear",
+  4: "Tectonic",
+  5: "Planetary",
+  6: "Stellar",
+  7: "Cosmic",
+  8: "Multiverse",
+  9: "Extradimensional",
+};
