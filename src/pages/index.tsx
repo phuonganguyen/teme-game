@@ -122,11 +122,13 @@ export default function Index({
           {Object.entries(clickQueue).map(([key, value]) => (
             <Profits key={key} value={value} />
           ))}
-          <Energy
-            level={session.level}
-            energy={userEnergy.energy}
-            resetTime={userEnergy.time}
-          />
+          {userEnergy && (
+            <Energy
+              level={session.level}
+              energy={userEnergy.energy}
+              resetTime={userEnergy.time}
+            />
+          )}
         </div>
         <div className={styles.claim}>
           <div className={styles.rectangle}>
