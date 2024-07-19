@@ -102,7 +102,7 @@ export default function Index({
             <div className={styles.text}>Shop</div>
           </Link>
           <LevelBar level={session.level} currenCoin={coins} />
-          <Link className={styles.item} href={"/upgrade"}>
+          <Link className={styles.item} href={"#"}>
             <Image
               src="/images/icons/rocket.png"
               width={32}
