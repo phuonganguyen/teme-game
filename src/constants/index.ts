@@ -28,6 +28,17 @@ export const titleNameMapper: { [key: number]: string } = {
   9: "Extradimensional",
 };
 
+export const catLevelUpMapper: { [key: number]: number } = {
+  1: 10000,
+  2: 100000,
+  3: 500000,
+  4: 1000000,
+  5: 2000000,
+  6: 10000000,
+  7: 50000000,
+  8: 100000000,
+};
+
 export const rewardPerHour: { [level: number]: number } = {
   1: 50,
   2: 150,

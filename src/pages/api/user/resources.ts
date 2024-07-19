@@ -3,29 +3,34 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import db from '@/libs/firestore';
 import { sessionOptions } from '@/libs/session';
+import { GetUserResourcesResponse } from '@/models';
 import { doc, getDoc } from '@firebase/firestore';
-
-type Data = {
-  energy: number;
-  time: Date;
-};
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<GetUserResourcesResponse>
 ) {
   const session = await getIronSession<IronSessionData>(
     req,
     res,
     sessionOptions
   );
-
+  const userDocRef = doc(db, "users", `${session.tgChatId}`);
+  const userDoc = await getDoc(userDocRef);
   const energyDocRef = doc(db, "energies", `${session.tgChatId}`);
   const energyDoc = await getDoc(energyDocRef);
-  if (energyDoc.exists()) {
+  if (userDoc.exists() && energyDoc.exists()) {
     const energy = energyDoc.data();
-    res.status(200).json({ energy: energy.energy, time: energy.time.toDate() });
+    const coins = userDoc.data().coins;
+    res.status(200).json({
+      energy: {
+        energy: energy.energy,
+        time: energy.time.toDate(),
+        level: energy.level,
+      },
+      coins,
+    });
   } else {
-    res.status(200).json({ energy: 0, time: undefined });
+    res.status(401).json({ energy: null, coins: 0 });
   }
 }

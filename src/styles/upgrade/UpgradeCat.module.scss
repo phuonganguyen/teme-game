@@ -49,34 +49,75 @@
     flex-direction: column;
     justify-content: flex-start;
     gap: 60px;
-  }
+    align-items: center;
 
-  .progress-bar {
-    appearance: none;
-    height: 24px;
-    border-radius: 100px;
+    .btn-upgrade {
+      width: 358px;
+      padding: 16px 60px;
 
-    /* Chrome and Safari */
-    &::-webkit-progress-bar {
-      background: #003b51;
-      border-radius: 100px;
+      border-radius: 8px;
+      border: 3px solid rgba(89, 210, 249, 0.5);
+      background: var(
+        --Gradient,
+        linear-gradient(180deg, #59d2f9 -60.17%, #00a3ff 100%)
+      );
+
+      color: #fff;
+      text-align: center;
+      font-family: Poppins;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
     }
 
-    &::-webkit-progress-value {
-      background: linear-gradient(to right, #00c2ff, #39fb6f, #00c136);
-      border-top-left-radius: 100px;
-      border-bottom-left-radius: 100px;
-    }
+    .energy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      .text {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-self: stretch;
+        color: var(--White, #fff);
+        font-family: Poppins;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
 
-    /* Firefox */
-    &::-moz-progress-bar {
-      background: linear-gradient(to right, #00c2ff, #39fb6f, #00c136);
-      border-top-left-radius: 100px;
-      border-bottom-left-radius: 100px;
-    }
+      .progress-bar {
+        appearance: none;
+        height: 24px;
+        width: 360px;
+        border-radius: 100px;
 
-    &::-webkit-progress-value {
-      transition: width 1s;
+        /* Chrome and Safari */
+        &::-webkit-progress-bar {
+          background: #003b51;
+          border-radius: 100px;
+        }
+
+        &::-webkit-progress-value {
+          background: linear-gradient(to right, #00c2ff, #39fb6f, #00c136);
+          border-top-left-radius: 100px;
+          border-bottom-left-radius: 100px;
+        }
+
+        /* Firefox */
+        &::-moz-progress-bar {
+          background: linear-gradient(to right, #00c2ff, #39fb6f, #00c136);
+          border-top-left-radius: 100px;
+          border-bottom-left-radius: 100px;
+        }
+
+        &::-webkit-progress-value {
+          transition: width 1s;
+        }
+      }
     }
   }
 }

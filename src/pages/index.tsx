@@ -11,6 +11,8 @@ import LevelBar from '@/components/LevelBar';
 import Profits from '@/components/Profits';
 import { earnPerTap } from '@/constants';
 import { sessionOptions } from '@/libs/session';
+import { UserEnergy } from '@/models';
+import UserService from '@/services/user-service';
 import styles from '@/styles/Home.module.scss';
 import { formatNumber } from '@/utils';
 
@@ -19,27 +21,18 @@ export default function Index({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [coins, setCoins] = useState(0);
-  const [energy, setEnergy] = useState(0);
-  const [resetTime, setResetTime] = useState<Date>(undefined);
   const [clickQueue, setClickQueue] = useState<{ [key: string]: number }>({});
+  const [userEnergy, setUserEnergy] = useState<UserEnergy>(undefined);
 
-  const getCoins = async () => {
-    const response = await fetch("/api/coins");
-    const data = await response.json();
-    setCoins(data.coins);
-  };
-
-  const getEnergy = async () => {
-    const response = await fetch("/api/user/energy");
-    const data = await response.json();
-    setEnergy(data.energy);
-    setResetTime(data.time);
+  const getResources = async () => {
+    var { coins, energy } = await UserService.getResources();
+    setCoins(coins);
+    setUserEnergy(energy);
   };
 
   useEffect(() => {
     if (session.tgChatId) {
-      getCoins();
-      getEnergy();
+      getResources();
     }
   }, [session.tgChatId]);
 
@@ -65,8 +58,7 @@ export default function Index({
     const response = await fetch("/api/user/tap", { method: "POST" });
     const result = await response.json();
     if (result.isSuccess) {
-      await getCoins();
-      await getEnergy();
+      getResources();
       addClickQueue();
     }
   };
@@ -130,7 +122,11 @@ export default function Index({
           {Object.entries(clickQueue).map(([key, value]) => (
             <Profits key={key} value={value} />
           ))}
-          <Energy level={session.level} energy={energy} resetTime={resetTime} />
+          <Energy
+            level={session.level}
+            energy={userEnergy.energy}
+            resetTime={userEnergy.time}
+          />
         </div>
         <div className={styles.claim}>
           <div className={styles.rectangle}>

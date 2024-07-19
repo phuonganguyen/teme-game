@@ -1,12 +1,12 @@
-import { IconProps } from "./type";
+import { IconProps } from '../type';
 
-export const IconLevel1 = ({ width = 33, height = 32 }: IconProps) => {
+export default function IconLevel1({ width = 80, height = 80 }: IconProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={height}
-      viewBox="0 0 33 32"
+      viewBox={`0 0 ${width} ${height}`}
       fill="none"
     >
       <path
@@ -33,4 +33,4 @@ export const IconLevel1 = ({ width = 33, height = 32 }: IconProps) => {
       </defs>
     </svg>
   );
-};
+}
