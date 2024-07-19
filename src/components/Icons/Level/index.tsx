@@ -9,7 +9,7 @@ type Props = {
 export default function IconLevel({ level, width = 80, height = 80 }: Props) {
   return (
     <Image
-      src={`/icons/level${level}.png`}
+      src={`/images/icons/level${level}.png`}
       width={width}
       height={height}
       alt="level"

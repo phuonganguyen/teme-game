@@ -50,3 +50,21 @@ export const rewardPerHour: { [level: number]: number } = {
   8: 16000,
   9: 30000,
 };
+
+export const energyByLevel: { [level: number]: number } = {
+  1: 1000,
+  2: 1500,
+  3: 2000,
+  4: 2500,
+  5: 3000,
+  6: 5000,
+  7: 5500,
+  8: 6000,
+  9: 6500,
+  10: 7000,
+  11: 8000,
+  12: 9000,
+  13: 10000,
+  14: 12000,
+  15: 15000,
+};
