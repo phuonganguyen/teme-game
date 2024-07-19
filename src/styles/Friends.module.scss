@@ -84,6 +84,7 @@
       align-items: flex-start;
       gap: 8px;
       align-self: stretch;
+      overflow-y: auto;
 
       .friend {
         display: flex;

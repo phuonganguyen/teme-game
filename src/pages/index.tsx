@@ -1,18 +1,18 @@
-import { getIronSession, IronSessionData } from "iron-session";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { getIronSession, IronSessionData } from 'iron-session';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import Energy from "@/components/Energy";
-import { IconCoin } from "@/components/Icons";
-import Image from "@/components/Image";
-import Layout from "@/components/Layout";
-import LevelBar from "@/components/LevelBar";
-import Profits from "@/components/Profits";
-import { earnPerTap } from "@/constants";
-import { sessionOptions } from "@/libs/session";
-import styles from "@/styles/Home.module.scss";
-import { formatNumber } from "@/utils";
+import Energy from '@/components/Energy';
+import { IconCoin } from '@/components/Icons';
+import Image from '@/components/Image';
+import Layout from '@/components/Layout';
+import LevelBar from '@/components/LevelBar';
+import Profits from '@/components/Profits';
+import { earnPerTap } from '@/constants';
+import { sessionOptions } from '@/libs/session';
+import styles from '@/styles/Home.module.scss';
+import { formatNumber } from '@/utils';
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 export default function Index({
@@ -100,7 +100,7 @@ export default function Index({
           {formatNumber(coins)}
         </div>
         <div className={styles["top-bar"]}>
-          <Link className={styles.item} href={"/shop"}>
+          <Link className={styles.item} href={"#"}>
             <Image
               src="/images/icons/shop.png"
               width={26}
