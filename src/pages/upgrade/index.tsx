@@ -58,11 +58,11 @@ export default function UpgradeCat({
         <div className={styles.cat}>
           <Image
             src={`/images/cats/level_${level}.png`}
-            width={250}
-            height={250}
+            width={215}
+            height={215}
             alt="cat"
           />
-          <IconLevel level={level} width={52} height={52} />
+          <IconLevel level={level} width={39} height={39} />
         </div>
         <div className={styles.upgrade}>
           <div className={styles.energy}>
