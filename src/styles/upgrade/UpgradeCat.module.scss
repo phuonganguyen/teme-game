@@ -69,12 +69,16 @@
       font-style: normal;
       font-weight: 700;
       line-height: normal;
+
+      &:active {
+        scale: 0.8;
+      }
     }
 
     .energy {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
       gap: 8px;
       .text {
         color: var(--White, #fff);
@@ -83,12 +87,15 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+        display: flex;
+        justify-content: space-between;
       }
 
       .progress-bar {
         appearance: none;
         height: 12px;
         border-radius: 100px;
+        width: 352px;
 
         /* Chrome and Safari */
         &::-webkit-progress-bar {
