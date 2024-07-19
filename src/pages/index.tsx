@@ -92,7 +92,7 @@ export default function Index({
           {formatNumber(coins)}
         </div>
         <div className={styles["top-bar"]}>
-          <Link className={styles.item} href={"#"} style={{ opacity: 0.5 }}>
+          <Link className={styles.item} href={"#"}>
             <Image
               src="/images/icons/shop.png"
               width={26}
