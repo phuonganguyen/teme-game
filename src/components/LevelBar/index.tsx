@@ -15,7 +15,9 @@ export default function LevelBar({ level, currenCoin }: Props) {
     <div className={styles.level}>
       <IconLevel level={level} width={32} height={32} />
       <div className={styles.process}>
-        <div className={styles.text}>0 / 10K</div>
+        <div className={styles.text}>
+          {currenCoin} / {max}
+        </div>
         <progress
           className={styles["progress-bar"]}
           value={currenCoin}
