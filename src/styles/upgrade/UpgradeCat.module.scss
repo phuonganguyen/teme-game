@@ -56,19 +56,16 @@
     width: 352px;
 
     .btn-upgrade {
-      padding: 16px 60px;
+      padding: 12px 60px;
 
       border-radius: 8px;
       border: 3px solid rgba(89, 210, 249, 0.5);
-      background: var(
-        --Gradient,
-        linear-gradient(180deg, #59d2f9 -60.17%, #00a3ff 100%)
-      );
+      background: linear-gradient(180deg, #59d2f9 -60.17%, #00a3ff 100%);
 
       color: #fff;
       text-align: center;
       font-family: Poppins;
-      font-size: 18px;
+      font-size: 14px;
       font-style: normal;
       font-weight: 700;
       line-height: normal;
@@ -80,13 +77,9 @@
       align-items: flex-start;
       gap: 8px;
       .text {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-self: stretch;
         color: var(--White, #fff);
         font-family: Poppins;
-        font-size: 20px;
+        font-size: 12px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -94,7 +87,7 @@
 
       .progress-bar {
         appearance: none;
-        height: 24px;
+        height: 12px;
         border-radius: 100px;
 
         /* Chrome and Safari */
