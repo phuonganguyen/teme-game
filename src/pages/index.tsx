@@ -114,7 +114,7 @@ export default function Index({
         </div>
         <div className={styles.cat} onClick={handleCatClick}>
           <Image
-            src={"/images/cats/level_1.png"}
+            src={`/images/cats/level_${session.level}.png`}
             width={225}
             height={225}
             alt="cat"
