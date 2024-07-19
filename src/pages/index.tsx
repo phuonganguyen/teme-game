@@ -92,7 +92,7 @@ export default function Index({
           {formatNumber(coins)}
         </div>
         <div className={styles["top-bar"]}>
-          <Link className={styles.item} href={"#"}>
+          <Link className={styles.item} href={"#"} style={{ opacity: 0.5 }}>
             <Image
               src="/images/icons/shop.png"
               width={26}
@@ -102,7 +102,7 @@ export default function Index({
             <div className={styles.text}>Shop</div>
           </Link>
           <LevelBar level={session.level} currenCoin={coins} />
-          <Link className={styles.item} href={"#"}>
+          <Link className={styles.item} href={"/upgrade"}>
             <Image
               src="/images/icons/rocket.png"
               width={32}
