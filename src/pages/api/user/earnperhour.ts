@@ -1,7 +1,7 @@
 import { getIronSession, IronSessionData } from "iron-session";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { earnPerTap, rewardPerHour } from "@/constants";
+import { rewardPerHour } from "@/constants";
 import db from "@/libs/firestore";
 import { sessionOptions } from "@/libs/session";
 import { Result } from "@/models";

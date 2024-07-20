@@ -69,7 +69,7 @@ export default function Index({
 
   const handleClaimClick = async () => {
     window.Telegram.WebApp.HapticFeedback.selectionChanged();
-    const response = await fetch("/api/user/earn-per-hour", { method: "POST" });
+    const response = await fetch("/api/user/earnperhour", { method: "POST" });
     const result = await response.json();
     if (result.isSuccess) {
       getResources();
