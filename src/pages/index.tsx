@@ -24,7 +24,7 @@ export default function Index({
   const [coins, setCoins] = useState(0);
   const [clickQueue, setClickQueue] = useState<{ [key: string]: number }>({});
   const [userEnergy, setUserEnergy] = useState<UserEnergy>(undefined);
-  const [earnedPerHour, setEarnedPerHouse] = useState(false);
+  const [earnedPerHour, setEarnedPerHouse] = useState(true);
   const earnPerHour = rewardPerHour[session.level];
 
   const getResources = async () => {
