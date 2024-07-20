@@ -1,7 +1,7 @@
 import { getIronSession, IronSessionData } from "iron-session";
 import { NextApiRequest, NextApiResponse } from "next";
 
-import { earnPerTap } from "@/constants";
+import { earnPerTap, rewardPerHour } from "@/constants";
 import db from "@/libs/firestore";
 import { sessionOptions } from "@/libs/session";
 import { Result } from "@/models";
@@ -17,23 +17,17 @@ export default async function handler(
     sessionOptions
   );
 
-  const energyDocRef = doc(db, "energies", `${session.tgChatId}`);
   const userDocRef = doc(db, "users", `${session.tgChatId}`);
-  const energyDoc = await getDoc(energyDocRef);
   const userDoc = await getDoc(userDocRef);
-  if (energyDoc.exists() && userDoc.exists()) {
-    const energy = energyDoc.data().energy;
-    if (energy > 0) {
-      const point = earnPerTap[session.level];
-      await updateDoc(energyDocRef, {
-        energy: increment(-point),
-      });
+  if (userDoc.exists()) {
+    if (userDoc.data().earnedPerHour == false) {
+      const amount = rewardPerHour[session.level];
       await updateDoc(userDocRef, {
-        coins: increment(point),
+        earnedPerHour: true,
+        coins: increment(amount),
       });
-      res.status(200).json({ isSuccess: true });
-      return;
     }
+  } else {
+    res.status(401).json({ isSuccess: false });
   }
-  res.status(200).json({ isSuccess: false });
 }

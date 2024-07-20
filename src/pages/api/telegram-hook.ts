@@ -1,11 +1,17 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import { Context, Markup, Telegraf } from 'telegraf';
+import { NextApiRequest, NextApiResponse } from "next";
+import { Context, Markup, Telegraf } from "telegraf";
 
-import { energyByLevel } from '@/constants';
-import db from '@/libs/firestore';
+import { energyByLevel } from "@/constants";
+import db from "@/libs/firestore";
 import {
-    arrayUnion, doc, getDoc, increment, setDoc, Timestamp, updateDoc
-} from '@firebase/firestore';
+  arrayUnion,
+  doc,
+  getDoc,
+  increment,
+  setDoc,
+  Timestamp,
+  updateDoc,
+} from "@firebase/firestore";
 
 const SECRET_HASH = "BQmLdGYERo3PY9dn2HQjsgWfV4t04F";
 const BOT_TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
@@ -88,6 +94,7 @@ bot.start(async (ctx) => {
           friends: friends,
           joinTime: Date.now(),
           level: 1,
+          earnedPerHour: false,
         },
         { merge: true }
       );

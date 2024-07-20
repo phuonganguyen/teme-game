@@ -1,20 +1,21 @@
-import { getIronSession, IronSessionData } from 'iron-session';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { getIronSession, IronSessionData } from "iron-session";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 
-import Energy from '@/components/Energy';
-import { IconCoin } from '@/components/Icons';
-import Image from '@/components/Image';
-import Layout from '@/components/Layout';
-import LevelBar from '@/components/LevelBar';
-import Profits from '@/components/Profits';
-import { earnPerTap } from '@/constants';
-import { sessionOptions } from '@/libs/session';
-import { UserEnergy } from '@/models';
-import UserService from '@/services/user-service';
-import styles from '@/styles/Home.module.scss';
-import { formatNumber } from '@/utils';
+import EarnPerHourCountDown from "@/components/EarnPerHourCountDown";
+import Energy from "@/components/Energy";
+import { IconCoin } from "@/components/Icons";
+import Image from "@/components/Image";
+import Layout from "@/components/Layout";
+import LevelBar from "@/components/LevelBar";
+import Profits from "@/components/Profits";
+import { earnPerTap, rewardPerHour } from "@/constants";
+import { sessionOptions } from "@/libs/session";
+import { UserEnergy } from "@/models";
+import UserService from "@/services/user-service";
+import styles from "@/styles/Home.module.scss";
+import { formatNumber } from "@/utils";
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 export default function Index({
@@ -23,11 +24,14 @@ export default function Index({
   const [coins, setCoins] = useState(0);
   const [clickQueue, setClickQueue] = useState<{ [key: string]: number }>({});
   const [userEnergy, setUserEnergy] = useState<UserEnergy>(undefined);
+  const [earnedPerHour, setEarnedPerHouse] = useState(false);
+  const earnPerHour = rewardPerHour[session.level];
 
   const getResources = async () => {
-    var { coins, energy } = await UserService.getResources();
+    var { coins, energy, earnedPerHour } = await UserService.getResources();
     setCoins(coins);
     setUserEnergy(energy);
+    setEarnedPerHouse(earnedPerHour);
   };
 
   useEffect(() => {
@@ -60,6 +64,15 @@ export default function Index({
     if (result.isSuccess) {
       getResources();
       addClickQueue();
+    }
+  };
+
+  const handleClaimClick = async () => {
+    window.Telegram.WebApp.HapticFeedback.selectionChanged();
+    const response = await fetch("/api/user/earn-per-hour", { method: "POST" });
+    const result = await response.json();
+    if (result.isSuccess) {
+      getResources();
     }
   };
 
@@ -130,17 +143,21 @@ export default function Index({
             />
           )}
         </div>
-        <div className={styles.claim}>
+        <div className={styles.claim} onClick={handleClaimClick}>
           <div className={styles.rectangle}>
             <div className={styles.info}>
               Total earn per hour
               <div className={styles.coin}>
                 <IconCoin width={15.4} height={15.4} />
-                <span>+ 50</span>
+                <span>+ {earnPerHour}</span>
               </div>
             </div>
           </div>
-          <div className={styles.text}>Claim 50</div>
+          {earnedPerHour ? (
+            <EarnPerHourCountDown onExpired={() => setEarnedPerHouse(false)} />
+          ) : (
+            <div className={styles.text}>Claim {earnPerHour}</div>
+          )}
         </div>
       </div>
     </Layout>

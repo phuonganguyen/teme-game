@@ -1,6 +1,7 @@
 export interface GetUserResourcesResponse {
   coins: number;
   energy: UserEnergy;
+  earnedPerHour: boolean;
 }
 
 export interface UserEnergy {

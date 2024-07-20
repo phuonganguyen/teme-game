@@ -1,10 +1,10 @@
-import { getIronSession, IronSessionData } from 'iron-session';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { getIronSession, IronSessionData } from "iron-session";
+import { NextApiRequest, NextApiResponse } from "next";
 
-import db from '@/libs/firestore';
-import { sessionOptions } from '@/libs/session';
-import { GetUserResourcesResponse } from '@/models';
-import { doc, getDoc } from '@firebase/firestore';
+import db from "@/libs/firestore";
+import { sessionOptions } from "@/libs/session";
+import { GetUserResourcesResponse } from "@/models";
+import { doc, getDoc } from "@firebase/firestore";
 
 export default async function handler(
   req: NextApiRequest,
@@ -22,6 +22,7 @@ export default async function handler(
   if (userDoc.exists() && energyDoc.exists()) {
     const energy = energyDoc.data();
     const coins = userDoc.data().coins;
+    const earnedPerHour = userDoc.data().earnedPerHour;
     res.status(200).json({
       energy: {
         energy: energy.energy,
@@ -29,8 +30,9 @@ export default async function handler(
         level: energy.level,
       },
       coins,
+      earnedPerHour,
     });
   } else {
-    res.status(401).json({ energy: null, coins: 0 });
+    res.status(401).json({ energy: null, coins: 0, earnedPerHour: false });
   }
 }

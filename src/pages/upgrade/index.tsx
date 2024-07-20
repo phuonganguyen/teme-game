@@ -1,16 +1,16 @@
-import confetti from 'canvas-confetti';
-import { getIronSession, IronSessionData } from 'iron-session';
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
-import { useEffect, useState } from 'react';
+import confetti from "canvas-confetti";
+import { getIronSession, IronSessionData } from "iron-session";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { useEffect, useState } from "react";
 
-import { IconCoin } from '@/components/Icons';
-import IconLevel from '@/components/Icons/Level';
-import Image from '@/components/Image';
-import Layout from '@/components/Layout';
-import { catLevelUpMapper, rewardPerHour, titleNameMapper } from '@/constants';
-import { sessionOptions } from '@/libs/session';
-import UserService from '@/services/user-service';
-import styles from '@/styles/upgrade/UpgradeCat.module.scss';
+import { IconCoin } from "@/components/Icons";
+import IconLevel from "@/components/Icons/Level";
+import Image from "@/components/Image";
+import Layout from "@/components/Layout";
+import { catLevelUpMapper, rewardPerHour, titleNameMapper } from "@/constants";
+import { sessionOptions } from "@/libs/session";
+import UserService from "@/services/user-service";
+import styles from "@/styles/upgrade/UpgradeCat.module.scss";
 
 export default function UpgradeCat({
   session,
@@ -47,11 +47,11 @@ export default function UpgradeCat({
     <Layout>
       <div className={styles.container}>
         <div className={styles.title}>
-          {titleNameMapper[session.level]}
+          {titleNameMapper[level]}
           <div className={styles["sub-title"]}>
             Earn per hour
             <span className={styles.coin}>
-              <IconCoin width={32} height={32} /> {rewardPerHour[session.level]}
+              <IconCoin width={32} height={32} /> {rewardPerHour[level]}
             </span>
           </div>
         </div>
