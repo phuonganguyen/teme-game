@@ -144,13 +144,11 @@ export default function Index({
           )}
         </div>
         <div className={styles.claim} onClick={handleClaimClick}>
-          <div className={styles.rectangle}>
-            <div className={styles.info}>
-              Total earn per hour
-              <div className={styles.coin}>
-                <IconCoin width={15.4} height={15.4} />
-                <span>+ {earnPerHour}</span>
-              </div>
+          <div className={styles.info}>
+            Total earn per hour
+            <div className={styles.coin}>
+              <IconCoin width={15.4} height={15.4} />
+              <span>+ {earnPerHour}</span>
             </div>
           </div>
           {earnedPerHour ? (
