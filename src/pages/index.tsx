@@ -143,7 +143,11 @@ export default function Index({
             />
           )}
         </div>
-        <div className={styles.claim} onClick={handleClaimClick}>
+        <button
+          className={styles.claim}
+          onClick={handleClaimClick}
+          disabled={earnedPerHour}
+        >
           <div className={styles.info}>
             Total earn per hour
             <div className={styles.coin}>
@@ -160,7 +164,7 @@ export default function Index({
               <>Claim {earnPerHour}</>
             )}
           </div>
-        </div>
+        </button>
       </div>
     </Layout>
   );

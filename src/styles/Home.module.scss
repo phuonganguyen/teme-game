@@ -127,13 +127,19 @@
     height: 36px;
     display: flex;
     align-self: stretch;
-
+    color: var(--White, #fff);
     border-radius: 8px;
     border: 2px solid rgba(89, 210, 249, 0.5);
     background: linear-gradient(180deg, #00bfff 0%, #00598a 100%);
 
     &:active {
       scale: 0.8;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      background: var(--Background, #003b51);
+      color: var(--Blue, #59d2f9);
     }
 
     .info {
@@ -168,7 +174,6 @@
     }
 
     .text {
-      color: var(--White, #fff);
       text-align: center;
       font-family: Poppins;
       font-size: 12px;
