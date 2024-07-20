@@ -1,4 +1,5 @@
 import Image from "../Image";
+import CountDown from "./CountDown";
 import styles from "./Energy.module.scss";
 
 type Props = {
@@ -39,7 +40,7 @@ export default function Energy({ level, energy, resetTime }: Props) {
         />
         {energy}/{maxEnergy}
       </div>
-      ~ 1h 58m 1s
+      <CountDown />
     </div>
   );
 }

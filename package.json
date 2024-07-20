@@ -11,6 +11,7 @@
   "dependencies": {
     "@firebase/firestore": "^4.6.4",
     "canvas-confetti": "^1.9.3",
+    "cron": "^3.1.7",
     "cross-env": "^7.0.3",
     "crypto-js": "^4.2.0",
     "firebase": "^10.12.3",
