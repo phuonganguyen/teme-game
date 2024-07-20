@@ -19,14 +19,13 @@ export default async function handler(
 
   const userDocRef = doc(db, "users", `${session.tgChatId}`);
   const userDoc = await getDoc(userDocRef);
-  if (userDoc.exists()) {
-    if (userDoc.data().earnedPerHour == false) {
-      const amount = rewardPerHour[session.level];
-      await updateDoc(userDocRef, {
-        earnedPerHour: true,
-        coins: increment(amount),
-      });
-    }
+  if (userDoc.exists() && userDoc.data().earnedPerHour == false) {
+    const amount = rewardPerHour[session.level];
+    await updateDoc(userDocRef, {
+      earnedPerHour: true,
+      coins: increment(amount),
+    });
+    res.status(200).json({ isSuccess: true });
   } else {
     res.status(401).json({ isSuccess: false });
   }

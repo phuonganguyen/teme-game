@@ -69,7 +69,7 @@ export default function Index({
 
   const handleClaimClick = async () => {
     window.Telegram.WebApp.HapticFeedback.selectionChanged();
-    const response = await fetch("/api/user/earnperhour", { method: "POST" });
+    const response = await fetch("/api/user/earn-per-hour", { method: "POST" });
     const result = await response.json();
     if (result.isSuccess) {
       getResources();
@@ -151,11 +151,15 @@ export default function Index({
               <span>+ {earnPerHour}</span>
             </div>
           </div>
-          {earnedPerHour ? (
-            <EarnPerHourCountDown onExpired={() => setEarnedPerHouse(false)} />
-          ) : (
-            <div className={styles.text}>Claim {earnPerHour}</div>
-          )}
+          <div className={styles.text}>
+            {earnedPerHour ? (
+              <EarnPerHourCountDown
+                onExpired={() => setEarnedPerHouse(false)}
+              />
+            ) : (
+              <>Claim {earnPerHour}</>
+            )}
+          </div>
         </div>
       </div>
     </Layout>
