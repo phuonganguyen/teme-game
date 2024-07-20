@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { catLevelUpMapper } from "@/constants";
+import { formatNumberCompact } from "@/utils";
 
 import { IconArrowUp } from "../Icons";
 import IconLevel from "../Icons/Level";
@@ -19,7 +20,7 @@ export default function LevelBar({ level, currenCoin }: Props) {
       <IconLevel level={level} width={32} height={32} />
       <div className={styles.process}>
         <div className={styles.text}>
-          {currenCoin} / {max}
+          {currenCoin} / {formatNumberCompact(max)}
         </div>
         <progress
           className={styles["progress-bar"]}
