@@ -1,8 +1,10 @@
-import Link from 'next/link';
+import Link from "next/link";
 
-import { IconArrowUp } from '../Icons';
-import IconLevel from '../Icons/Level';
-import styles from './LevelBar.module.scss';
+import { catLevelUpMapper } from "@/constants";
+
+import { IconArrowUp } from "../Icons";
+import IconLevel from "../Icons/Level";
+import styles from "./LevelBar.module.scss";
 
 type Props = {
   level: number;
@@ -10,7 +12,8 @@ type Props = {
 };
 
 export default function LevelBar({ level, currenCoin }: Props) {
-  const max = 10000;
+  const max = catLevelUpMapper[level];
+  const disabled = currenCoin < max;
   return (
     <div className={styles.level}>
       <IconLevel level={level} width={32} height={32} />
@@ -26,7 +29,10 @@ export default function LevelBar({ level, currenCoin }: Props) {
           {currenCoin}%
         </progress>
       </div>
-      <Link className={styles["btn-up"]} href={"/upgrade"}>
+      <Link
+        className={`${styles["btn-up"]} ${disabled ? styles["disabled"] : ""}`}
+        href={"/upgrade"}
+      >
         <IconArrowUp />
         Up
       </Link>

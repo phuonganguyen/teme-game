@@ -78,5 +78,14 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+
+    &:active {
+      scale: 0.8;
+    }
+
+    &.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 }
