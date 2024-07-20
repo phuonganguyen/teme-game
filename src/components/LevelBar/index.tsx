@@ -14,9 +14,8 @@ type Props = {
 
 export default function LevelBar({ level, currenCoin }: Props) {
   const max = catLevelUpMapper[level];
-  const disabled = currenCoin < max;
   return (
-    <div className={styles.level}>
+    <Link className={styles.level} href="/upgrade">
       <IconLevel level={level} width={32} height={32} />
       <div className={styles.process}>
         <div className={styles.text}>
@@ -30,13 +29,10 @@ export default function LevelBar({ level, currenCoin }: Props) {
           {currenCoin}%
         </progress>
       </div>
-      <Link
-        className={`${styles["btn-up"]} ${disabled ? styles["disabled"] : ""}`}
-        href={"/upgrade"}
-      >
+      <div className={styles["btn-up"]}>
         <IconArrowUp />
         Up
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
