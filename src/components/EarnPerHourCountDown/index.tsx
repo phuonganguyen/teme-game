@@ -36,5 +36,5 @@ export default function EarnPerHourCountDown({ onExpired }: Props) {
     return () => clearInterval(interval);
   }, [nextTime, expression, onExpired]);
 
-  return `~${hours}h ${minutes}m ${seconds}s`;
+  return `${hours}h ${minutes}m ${seconds}s`;
 }

@@ -1,12 +1,8 @@
+import { UserEnergy } from "@/models";
+
 import Image from "../Image";
 import CountDown from "./CountDown";
 import styles from "./Energy.module.scss";
-
-type Props = {
-  level: number;
-  energy: number;
-  resetTime: Date;
-};
 
 const energyByLevel: { [level: number]: number } = {
   1: 1000,
@@ -26,7 +22,7 @@ const energyByLevel: { [level: number]: number } = {
   15: 15000,
 };
 
-export default function Energy({ level, energy, resetTime }: Props) {
+export default function Energy({ level, energy }: UserEnergy) {
   const maxEnergy = energyByLevel[level];
 
   return (
