@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <main className={styles.layout}>
       <Menu />
       {children}
-      <audio src="/8_Bit_World.mp3" autoPlay />
+      <audio src="/8_Bit_World.mp3" autoPlay loop />
     </main>
   );
 }
