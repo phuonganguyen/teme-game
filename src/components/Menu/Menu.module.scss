@@ -2,8 +2,8 @@
   width: 100%;
   position: fixed;
   bottom: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 15px;
+  padding-right: 15spx;
 
   .menu {
     display: flex;
@@ -11,11 +11,11 @@
     justify-content: space-between;
     align-items: flex-end;
     border-radius: 15.443px 15.443px 0px 0px;
-    border-top: 1.287px solid var(--Blue, #59d2f9);
-    background: #003b51;
-
+    border-top: 1.287px solid var(--Blue, #59D2F9);
+    background: #003B51;
+    
     /* Drop */
-    box-shadow: 0px -4px 12px 0px rgba(0, 224, 255, 0.3);
+    box-shadow: 0px -4px 12px 0px rgba(0, 224, 255, 0.30);
 
     .menu-item {
       display: flex;
