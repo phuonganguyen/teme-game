@@ -48,7 +48,7 @@ export default function Index({
 
     setTimeout(() => {
       removeClickQueue(key);
-    }, 1000);
+    }, 500);
   };
 
   const removeClickQueue = (key: string) => {
