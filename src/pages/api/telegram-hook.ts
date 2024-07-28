@@ -117,6 +117,13 @@ bot.start(async (ctx) => {
     console.log("Transaction failed: ", e);
   }
 
+  const msg = await ctx.reply(
+    "💎Get Teme\nJust for you, a game that lets you earn while having fun. Play Teme and prepare for the future of crypto.",
+    Markup.inlineKeyboard([
+      [Markup.button.webApp("PLAY  NOW", "https://game.temecoin.xyz")],
+    ])
+  );
+  await ctx.pinChatMessage(msg.message_id);
   await handleOnMessage(ctx);
 });
 
