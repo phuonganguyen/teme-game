@@ -124,7 +124,6 @@ bot.start(async (ctx) => {
     ])
   );
   await handleOnMessage(ctx);
-  await ctx.pinChatMessage(msg.message_id);
 });
 
 bot.on("message", async (ctx) => {
