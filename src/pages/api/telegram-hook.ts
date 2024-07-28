@@ -123,8 +123,8 @@ bot.start(async (ctx) => {
       [Markup.button.webApp("PLAY  NOW", "https://game.temecoin.xyz")],
     ])
   );
-  await ctx.pinChatMessage(msg.message_id);
   await handleOnMessage(ctx);
+  await ctx.pinChatMessage(msg.message_id);
 });
 
 bot.on("message", async (ctx) => {
