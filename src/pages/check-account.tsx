@@ -11,7 +11,7 @@ import UserService from '@/services/user-service';
 export default function CheckAccount({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const [verified, setVerified] = useState(true);
+  const [verified, setVerified] = useState(false);
   const [ageResponse, setAgeResponse] = useState<AgeResponse>(undefined);
 
   useEffect(() => {

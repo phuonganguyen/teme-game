@@ -90,6 +90,18 @@ export default function VerifyAccountResult({ isPremium, age, reward }: Props) {
     router.push("/");
   };
 
+  const renderStepContent = () => {
+    if (step == 1) {
+      return <Age age={age} />;
+    }
+
+    if (step == 2) {
+      return <Premium />;
+    }
+
+    return <Reward reward={reward} />;
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.slider}>
@@ -97,9 +109,7 @@ export default function VerifyAccountResult({ isPremium, age, reward }: Props) {
         <div className={styles.item}></div>
         {isPremium && <div className={styles.item}></div>}
       </div>
-      <div className={styles.inner}>
-        <Reward reward={reward} />
-      </div>
+      <div className={styles.inner}>{renderStepContent()}</div>
       <button onClick={handleContinueClick} className={styles["btn-continue"]}>
         Continue
       </button>
