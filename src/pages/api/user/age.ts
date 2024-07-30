@@ -72,7 +72,7 @@ export default async function handler(
 
   const userDocRef = doc(db, "users", `${session.tgChatId}`);
   const userDoc = await getDoc(userDocRef);
-  if (userDoc.exists() && userDoc.data().firstClaimed == false) {
+  if (userDoc.exists()) {
     await updateDoc(userDocRef, {
       firstClaimed: true,
       coins: increment(reward),
