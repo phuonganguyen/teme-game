@@ -105,9 +105,17 @@ export default function VerifyAccountResult({ isPremium, age, reward }: Props) {
   return (
     <div className={styles.container}>
       <div className={styles.slider}>
-        <div className={styles.item}></div>
-        <div className={styles.item}></div>
-        {isPremium && <div className={styles.item}></div>}
+        <div
+          className={`${styles.item} ${step == 1 ? styles.active : ""}`}
+        ></div>
+        {isPremium && (
+          <div
+            className={`${styles.item} ${step == 2 ? styles.active : ""}`}
+          ></div>
+        )}
+        <div
+          className={`${styles.item} ${step == 3 ? styles.active : ""}`}
+        ></div>
       </div>
       <div className={styles.inner}>{renderStepContent()}</div>
       <button onClick={handleContinueClick} className={styles["btn-continue"]}>
