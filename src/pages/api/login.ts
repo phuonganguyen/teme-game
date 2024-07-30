@@ -1,20 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import CryptoJS from "crypto-js";
-import { IronSessionData, getIronSession } from "iron-session";
-import { sessionOptions } from "@/libs/session";
+import { getIronSession, IronSessionData } from "iron-session";
+
 import db from "@/libs/firestore";
+import { sessionOptions } from "@/libs/session";
+import { LoginResponse } from "@/models";
 import { doc, getDoc } from "@firebase/firestore";
 
 const TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
 
-type Data = {
-  isLoggedIn: boolean;
-};
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<LoginResponse>
 ) {
   const { telegramInitData } = req.body;
   const initData = new URLSearchParams(telegramInitData);
@@ -37,16 +35,19 @@ export default async function handler(
       session.username = user.username;
       session.level = user.level;
       session.hash = tgHash;
+      session.isPremium = user.isPremium;
 
       await session.save();
-      res.status(200).json({ isLoggedIn: true });
+      res
+        .status(200)
+        .json({ isLoggedIn: true, firstClaimed: user.firstClaimed });
       return;
     }
   }
 
   session.destroy();
   await session.save();
-  res.status(200).json({ isLoggedIn: false });
+  res.status(200).json({ isLoggedIn: false, firstClaimed: true });
 }
 
 const verifyWebAppOpenByTelegram = async (

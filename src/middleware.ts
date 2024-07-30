@@ -1,8 +1,9 @@
-import { IronSessionData, getIronSession } from "iron-session";
+import { getIronSession, IronSessionData } from "iron-session";
 import { NextFetchEvent, NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+
 import { sessionOptions } from "./libs/session";
 
+import type { NextRequest } from "next/server";
 export const middleware = async (req: NextRequest, event: NextFetchEvent) => {
   const res = NextResponse.next();
   const { pathname, searchParams, locale } = req.nextUrl;
@@ -26,5 +27,5 @@ export const middleware = async (req: NextRequest, event: NextFetchEvent) => {
 };
 
 export const config = {
-  matcher: ["/aaa"],
+  matcher: ["/", "/battle", "/connect", "/friends", "/task"],
 };

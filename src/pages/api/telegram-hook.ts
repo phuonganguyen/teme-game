@@ -95,6 +95,8 @@ bot.start(async (ctx) => {
           joinTime: Date.now(),
           level: 1,
           earnedPerHour: false,
+          firstClaimed: false,
+          isPremium: is_premium,
         },
         { merge: true }
       );

@@ -1,6 +1,6 @@
-import Image from "@/components/Image";
+import Image from '@/components/Image';
 
-import { IconProps } from "./type";
+import { IconProps } from './type';
 
 export const IconCopy = ({ width = 16, height = 16 }: IconProps) => (
   <svg

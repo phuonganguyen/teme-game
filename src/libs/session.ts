@@ -24,5 +24,6 @@ declare module "iron-session" {
     username: string;
     level: number;
     hash: string;
+    isPremium: boolean;
   }
 }

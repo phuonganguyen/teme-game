@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
-import styles from "@/styles/Login.module.scss";
-import Image from "@/components/Image";
-import { useRouter } from "next/router";
-import { IconTelegram, IconWeb, IconX, IconYoutube } from "@/components/Icons";
+import { useRouter } from 'next/router';
+import { useCallback, useEffect, useState } from 'react';
+
+import { IconTelegram, IconWeb, IconX, IconYoutube } from '@/components/Icons';
+import Image from '@/components/Image';
+import styles from '@/styles/Login.module.scss';
 
 export default function Login() {
   const router = useRouter();
@@ -61,7 +62,7 @@ export default function Login() {
 
       if (authData.isLoggedIn) {
         setTimeout(() => {
-          router.push("/");
+          router.push(authData.firstClaimed ? "/" : "/check-account");
         }, 3000);
       } else {
         router.push("/unauthorized");

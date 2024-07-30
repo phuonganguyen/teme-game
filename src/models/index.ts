@@ -13,3 +13,13 @@ export interface UserEnergy {
 export interface Result {
   isSuccess: boolean;
 }
+
+export interface LoginResponse {
+  isLoggedIn: boolean;
+  firstClaimed: boolean;
+}
+
+export interface AgeResponse {
+  age: number;
+  reward: number;
+}
