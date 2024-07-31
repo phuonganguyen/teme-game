@@ -1,5 +1,6 @@
 import { getIronSession, IronSessionData } from "iron-session";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
@@ -26,6 +27,7 @@ export default function Index({
   const [userEnergy, setUserEnergy] = useState<UserEnergy>(undefined);
   const [earnedPerHour, setEarnedPerHouse] = useState(true);
   const earnPerHour = rewardPerHour[session.level];
+  const router = useRouter();
 
   const getResources = async () => {
     var { coins, energy, earnedPerHour } = await UserService.getResources();
@@ -159,6 +161,14 @@ export default function Index({
             )}
           </div>
         </button>
+        <Image
+          src={"/images/check_point.png"}
+          width={52}
+          height={52}
+          alt="age"
+          style={{ position: "absolute", top: "244px" }}
+          onClick={() => router.push("/age")}
+        />
       </div>
     </Layout>
   );
