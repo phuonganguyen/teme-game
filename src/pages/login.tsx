@@ -1,9 +1,9 @@
-import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
 
-import { IconTelegram, IconWeb, IconX, IconYoutube } from '@/components/Icons';
-import Image from '@/components/Image';
-import styles from '@/styles/Login.module.scss';
+import { IconTelegram, IconWeb, IconX, IconYoutube } from "@/components/Icons";
+import Image from "@/components/Image";
+import styles from "@/styles/Login.module.scss";
 
 export default function Login() {
   const router = useRouter();
@@ -79,8 +79,8 @@ export default function Login() {
       <div className={styles.cat}>
         <Image
           src={"/images/loading/cat.png"}
-          width={202}
-          height={202}
+          width={270}
+          height={272}
           alt="cat-loading"
         />
       </div>
