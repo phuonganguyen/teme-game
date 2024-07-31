@@ -25,5 +25,7 @@ declare module "iron-session" {
     level: number;
     hash: string;
     isPremium: boolean;
+    age: number;
+    ageReward: number;
   }
 }

@@ -3,10 +3,11 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import CryptoJS from "crypto-js";
 import { getIronSession, IronSessionData } from "iron-session";
 
+import { ageMapper, getAge } from "@/libs/age";
 import db from "@/libs/firestore";
 import { sessionOptions } from "@/libs/session";
 import { LoginResponse } from "@/models";
-import { doc, getDoc } from "@firebase/firestore";
+import { doc, getDoc, increment, updateDoc } from "@firebase/firestore";
 
 const TOKEN = "7373895404:AAGeYJytxdito2MjyYJOdVvn7oizQeNQIkE";
 
@@ -36,6 +37,23 @@ export default async function handler(
       session.level = user.level;
       session.hash = tgHash;
       session.isPremium = user.isPremium;
+
+      if (user.firstClaimed !== true) {
+        const age = getAge(tgUser.id);
+        const ageReward = ageMapper[age];
+        session.age = age;
+        session.ageReward = ageReward;
+
+        await updateDoc(userRef, {
+          firstClaimed: true,
+          age: age,
+          ageReward: ageReward,
+          coins: increment(ageReward),
+        });
+      } else {
+        session.age = user.age;
+        session.ageReward = user.ageReward;
+      }
 
       await session.save();
       res

@@ -1,4 +1,4 @@
-import { AgeResponse, GetUserResourcesResponse, Result } from '@/models';
+import { AgeResponse, GetUserResourcesResponse, Result } from "@/models";
 
 const UserService = {
   getResources: async (): Promise<GetUserResourcesResponse> => {
@@ -8,10 +8,6 @@ const UserService = {
   upgradeCat: async (): Promise<Result> => {
     const response = await fetch("/api/user/upgrade", { method: "POST" });
     return response.json();
-  },
-  getAges: async (): Promise<AgeResponse> => {
-    const response = await fetch("/api/user/age");
-    return await response.json();
   },
 };
 
