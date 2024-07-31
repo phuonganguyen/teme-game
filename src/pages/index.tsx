@@ -166,7 +166,7 @@ export default function Index({
           width={52}
           height={52}
           alt="age"
-          style={{ position: "absolute", top: "244px" }}
+          style={{ position: "absolute", top: "244px", left: "20px" }}
           onClick={() => router.push("/age")}
         />
       </div>
