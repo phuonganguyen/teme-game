@@ -1,22 +1,23 @@
-import { getIronSession, IronSessionData } from "iron-session";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { getIronSession, IronSessionData } from 'iron-session';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import useSound from 'use-sound';
+import { v4 as uuidv4 } from 'uuid';
 
-import EarnPerHourCountDown from "@/components/EarnPerHourCountDown";
-import Energy from "@/components/Energy";
-import { IconCoin } from "@/components/Icons";
-import Image from "@/components/Image";
-import Layout from "@/components/Layout";
-import LevelBar from "@/components/LevelBar";
-import Profits from "@/components/Profits";
-import { earnPerTap, rewardPerHour } from "@/constants";
-import { sessionOptions } from "@/libs/session";
-import { UserEnergy } from "@/models";
-import UserService from "@/services/user-service";
-import styles from "@/styles/Home.module.scss";
-import { formatNumber } from "@/utils";
+import EarnPerHourCountDown from '@/components/EarnPerHourCountDown';
+import Energy from '@/components/Energy';
+import { IconCoin } from '@/components/Icons';
+import Image from '@/components/Image';
+import Layout from '@/components/Layout';
+import LevelBar from '@/components/LevelBar';
+import Profits from '@/components/Profits';
+import { earnPerTap, rewardPerHour } from '@/constants';
+import { sessionOptions } from '@/libs/session';
+import { UserEnergy } from '@/models';
+import UserService from '@/services/user-service';
+import styles from '@/styles/Home.module.scss';
+import { formatNumber } from '@/utils';
 
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
 export default function Index({
@@ -28,6 +29,7 @@ export default function Index({
   const [earnedPerHour, setEarnedPerHouse] = useState(true);
   const earnPerHour = rewardPerHour[session.level];
   const router = useRouter();
+  const [play] = useSound("/sounds/temetap1s.mp3", { volume: 1 });
 
   const getResources = async () => {
     var { coins, energy, earnedPerHour } = await UserService.getResources();
@@ -61,6 +63,7 @@ export default function Index({
 
   const handleCatClick = async () => {
     window.Telegram.WebApp.HapticFeedback.selectionChanged();
+    play();
     const response = await fetch("/api/user/tap", { method: "POST" });
     const result = await response.json();
     if (result.isSuccess) {
