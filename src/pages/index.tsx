@@ -131,18 +131,17 @@ export default function Index({
           </Link>
         </div>
         <div className={styles.cat} onClick={handleCatClick}>
+          <div className={styles["tab-animation"]}>
+            {Object.entries(clickQueue).map(([key, value]) => (
+              <Profits key={key} value={value} />
+            ))}
+          </div>
           <Image
             src={`/images/cats/level_${session.level}.png`}
             width={225}
             height={225}
             alt="cat"
           />
-          <div className={styles["tab-animation"]}>
-            {Object.entries(clickQueue).map(([key, value]) => (
-              <Profits key={key} value={value} />
-            ))}
-          </div>
-
           {userEnergy && <Energy {...userEnergy} />}
         </div>
         <button
