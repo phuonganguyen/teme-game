@@ -24,7 +24,9 @@ export default function Index({
   session,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [coins, setCoins] = useState(0);
-  const [clickQueue, setClickQueue] = useState<{ [key: string]: number }>({});
+  const [clickQueue, setClickQueue] = useState<{ id: string; value: number }[]>(
+    []
+  );
   const [userEnergy, setUserEnergy] = useState<UserEnergy>(undefined);
   const [earnedPerHour, setEarnedPerHouse] = useState(true);
   const earnPerHour = rewardPerHour[session.level];
@@ -45,20 +47,17 @@ export default function Index({
   }, [session.tgChatId]);
 
   const addClickQueue = () => {
-    const key = uuidv4();
-    var queue = clickQueue;
-    queue[key] = earnPerTap[session.level];
-    setClickQueue(queue);
+    const id = uuidv4();
+    const value = earnPerTap[session.level];
+    setClickQueue([...clickQueue, { id, value }]);
 
     setTimeout(() => {
-      removeClickQueue(key);
+      removeClickQueue(id);
     }, 500);
   };
 
-  const removeClickQueue = (key: string) => {
-    const queue = clickQueue;
-    delete queue[key];
-    setClickQueue(queue);
+  const removeClickQueue = (id: string) => {
+    setClickQueue(clickQueue.filter((x) => x.id !== id));
   };
 
   const handleCatClick = async () => {
@@ -132,8 +131,8 @@ export default function Index({
         </div>
         <div className={styles.cat} onClick={handleCatClick}>
           <div className={styles["tab-animation"]}>
-            {Object.entries(clickQueue).map(([key, value]) => (
-              <Profits key={key} value={value} />
+            {clickQueue.map(({ id, value }) => (
+              <Profits key={id} value={value} />
             ))}
           </div>
           <Image
