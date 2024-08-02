@@ -137,9 +137,12 @@ export default function Index({
             height={225}
             alt="cat"
           />
-          {/* {Object.entries(clickQueue).map(([key, value]) => (
-            <Profits key={key} value={value} />
-          ))} */}
+          <div className={styles["tab-animation"]}>
+            {Object.entries(clickQueue).map(([key, value]) => (
+              <Profits key={key} value={+value} />
+            ))}
+          </div>
+
           {userEnergy && <Energy {...userEnergy} />}
         </div>
         <button
