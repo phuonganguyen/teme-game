@@ -139,7 +139,7 @@ export default function Index({
           />
           <div className={styles["tab-animation"]}>
             {Object.entries(clickQueue).map(([key, value]) => (
-              <Profits key={key} value={+value} />
+              <Profits key={key} value={value} />
             ))}
           </div>
 
